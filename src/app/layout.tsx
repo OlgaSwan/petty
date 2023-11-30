@@ -3,10 +3,10 @@ import type { Metadata } from 'next'
 import { Pixelify_Sans } from 'next/font/google'
 
 import { metaTitle } from '@component/app/shared-data'
-import styles from './page.module.css'
+import styles from './page.module.scss'
 import './globals.css'
 
-const pixelify = Pixelify_Sans({ subsets: ['latin'], weight: ['400', '600'] })
+const pixelify = Pixelify_Sans({ weight: ['400', '600'], subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: metaTitle,

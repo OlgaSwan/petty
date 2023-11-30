@@ -34,16 +34,16 @@ header {
   justify-content: space-between;
 }
 
-.header--nav ul {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  list-style: none;
+.header--nav {
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    list-style: none;
+  }
 }
 
 footer {
   display: flex;
   justify-content: center;
 }
-
-/*# sourceMappingURL=globals.css.map */
