@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function Home() {
 
   return (
@@ -6,8 +8,10 @@ export default function Home() {
         <h2>Pet name</h2>
         <input type='text'/>
       </div>
-      <div>Choose your pet</div>
-      <button className='play--btn'>PLAY</button>
+      <div>
+        <h3>Choose your pet!</h3>
+        <button className='play--btn'>PLAY</button>
+      </div>
     </>
   )
 }
