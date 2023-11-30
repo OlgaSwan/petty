@@ -1,8 +1,10 @@
-import styles from './page.module.css'
-
 export default function Home() {
 
   return (
-    <main className={styles.main}>Choose your pet</main>
+    <>
+      <input type='text'/>
+      <div>Choose your pet</div>
+      <button className='play--btn'>PLAY</button>
+    </>
   )
 }

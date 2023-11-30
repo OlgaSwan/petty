@@ -1,9 +1,8 @@
 import React from 'react'
-import styles from './page.module.css'
 
 const Loading = () => {
   return (
-    <main className={styles.main}>Loading...</main>
+    <div>Loading...</div>
   )
 }
 export default Loading

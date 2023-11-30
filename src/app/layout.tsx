@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Pixelify_Sans } from 'next/font/google'
 
 import { metaTitle } from '@component/app/shared-data'
+import styles from './page.module.css'
 import './globals.css'
 
 const pixelify = Pixelify_Sans({ subsets: ['latin'], weight: ['400', '600'] })
@@ -30,7 +31,7 @@ export default function RootLayout( {
           </ul>
         </nav>
       </header>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
       <footer>Olga Swan &copy; 2023</footer>
     </div>
     </body>
