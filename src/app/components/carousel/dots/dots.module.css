@@ -18,13 +18,12 @@
   height: 4px;
   max-height: 4px;
   margin-right: 3px;
-  border-radius: 50%;
-  background-color: #d2d2d2;
+  background-color: #e3e3e3;
   transition: all 0.25s;
   cursor: pointer;
 }
 .dotList .dot.active {
-  background-color: #e73439;
+  background-color: #000;
 }
 .dotList .dot:last-child {
   margin-right: 0;

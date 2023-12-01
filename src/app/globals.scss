@@ -28,6 +28,12 @@ a {
   text-decoration: none;
 }
 
+.body--container {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+}
+
 header {
   display: flex;
   flex-direction: row;

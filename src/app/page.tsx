@@ -12,7 +12,6 @@ export default function Home() {
       <div>
         <h3>Choose your pet!</h3>
         <PetOptions/>
-        <button className='play--btn'>PLAY</button>
       </div>
     </>
   )

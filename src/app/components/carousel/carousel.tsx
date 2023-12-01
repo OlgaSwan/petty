@@ -7,19 +7,19 @@ import styles from './carousel.module.scss'
 
 type Props<T> = {
   slides: T[]
-  children: (props: T) => JSX.Element
+  children: ( props: T ) => JSX.Element
   visibleItemsNumber?: number
 }
 
-function Carousel<T>({ slides, children, visibleItemsNumber = 3 }: Props<T>) {
+function Carousel<T>( { slides, children, visibleItemsNumber = 3 }: Props<T> ) {
   const [start, setStart] = useState(0)
 
   const isControlsVisible = slides.length > visibleItemsNumber
 
   const visibleItems = isControlsVisible
     ? slides
-        .concat(slides.slice(0, visibleItemsNumber))
-        .slice(start, start + visibleItemsNumber)
+      .concat(slides.slice(0, visibleItemsNumber))
+      .slice(start, start + visibleItemsNumber)
     : slides
 
   const onNextClick = () => {
@@ -34,15 +34,15 @@ function Carousel<T>({ slides, children, visibleItemsNumber = 3 }: Props<T>) {
     <div>
       <div className={styles.slides}>
         {isControlsVisible && (
-          <PrevButton onClick={onPrevClick} className={styles.navButtons} />
+          <PrevButton onClick={onPrevClick} className={styles.navButtons}/>
         )}
 
         <ul className={styles.list}>
-          {visibleItems.map((slide) => (children ? children(slide) : null))}
+          {visibleItems.map(( slide ) => ( children ? children(slide) : null ))}
         </ul>
 
         {isControlsVisible && (
-          <NextButton onClick={onNextClick} className={styles.navButtons} />
+          <NextButton onClick={onNextClick} className={styles.navButtons}/>
         )}
       </div>
 
@@ -51,7 +51,7 @@ function Carousel<T>({ slides, children, visibleItemsNumber = 3 }: Props<T>) {
           <Dots
             items={slides.length}
             active={start}
-            onClick={(active) => setStart(active)}
+            onClick={( active ) => setStart(active)}
           />
         </div>
       )}
