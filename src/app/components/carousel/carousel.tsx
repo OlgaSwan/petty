@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Dots from '@component/app/components/carousel/dots/dots'
 import PrevButton from '@component/app/components/carousel/prev-button'
 import NextButton from '@component/app/components/carousel/next-button'
@@ -9,10 +9,15 @@ type Props<T> = {
   slides: T[]
   children: ( props: T ) => JSX.Element
   visibleItemsNumber?: number
+  selectedSlide: ( index: number ) => void
 }
 
-function Carousel<T>( { slides, children, visibleItemsNumber = 3 }: Props<T> ) {
+function Carousel<T>( { slides, children, visibleItemsNumber = 3, selectedSlide }: Props<T> ) {
   const [start, setStart] = useState(0)
+
+  useEffect(() => {
+    selectedSlide(start + 1)
+  }, [start, selectedSlide])
 
   const isControlsVisible = slides.length > visibleItemsNumber
 
