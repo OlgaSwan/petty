@@ -17,5 +17,7 @@ module.exports = {
         'comma-dangle': ['off', true],
         'semi': ['off', false],
         'react/display-name': 'off',
+        'object-curly-spacing': ['off', 'always', {'objectsInObjects': false}],
+        'array-bracket-spacing': ['off', 'never']
     },
 }
