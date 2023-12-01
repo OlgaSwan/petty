@@ -18,6 +18,7 @@ module.exports = {
         'semi': ['off', false],
         'react/display-name': 'off',
         'object-curly-spacing': ['off', 'always', {'objectsInObjects': false}],
-        'array-bracket-spacing': ['off', 'never']
+        'array-bracket-spacing': ['off', 'never'],
+        'space-in-parens': ['off', 'never', {'exceptions': ['{}']}],
     },
 }
