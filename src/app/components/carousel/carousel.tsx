@@ -5,23 +5,21 @@ import NextButton from '@component/app/components/carousel/next-button'
 
 import styles from './carousel.module.scss'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+type Props<T> = {
+  slides: T[]
+  children: (props: T) => JSX.Element
+  visibleItemsNumber?: number
+}
 
-type Props = {
-  slides: any[];
-  children: ( props: any ) => JSX.Element;
-  visibleItemsNumber?: number;
-};
-
-function Carousel( { slides, children, visibleItemsNumber = 3 }: Props ) {
+function Carousel<T>({ slides, children, visibleItemsNumber = 3 }: Props<T>) {
   const [start, setStart] = useState(0)
 
   const isControlsVisible = slides.length > visibleItemsNumber
 
   const visibleItems = isControlsVisible
     ? slides
-      .concat(slides.slice(0, visibleItemsNumber))
-      .slice(start, start + visibleItemsNumber)
+        .concat(slides.slice(0, visibleItemsNumber))
+        .slice(start, start + visibleItemsNumber)
     : slides
 
   const onNextClick = () => {
@@ -36,17 +34,15 @@ function Carousel( { slides, children, visibleItemsNumber = 3 }: Props ) {
     <div>
       <div className={styles.slides}>
         {isControlsVisible && (
-          <PrevButton onClick={onPrevClick} className={styles.navButtons}/>
+          <PrevButton onClick={onPrevClick} className={styles.navButtons} />
         )}
 
         <ul className={styles.list}>
-          {visibleItems.map(( slide: any ) =>
-            children ? children(slide) : null,
-          )}
+          {visibleItems.map((slide) => (children ? children(slide) : null))}
         </ul>
 
         {isControlsVisible && (
-          <NextButton onClick={onNextClick} className={styles.navButtons}/>
+          <NextButton onClick={onNextClick} className={styles.navButtons} />
         )}
       </div>
 
@@ -55,7 +51,7 @@ function Carousel( { slides, children, visibleItemsNumber = 3 }: Props ) {
           <Dots
             items={slides.length}
             active={start}
-            onClick={( active: number ) => setStart(active)}
+            onClick={(active) => setStart(active)}
           />
         </div>
       )}
@@ -63,4 +59,4 @@ function Carousel( { slides, children, visibleItemsNumber = 3 }: Props ) {
   )
 }
 
-export default React.memo(Carousel)
+export default React.memo(Carousel) as typeof Carousel
