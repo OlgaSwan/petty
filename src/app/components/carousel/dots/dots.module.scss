@@ -1,0 +1,35 @@
+.dotList {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 0;
+  list-style-type: none;
+
+  &:hover .dot {
+    width: 8px;
+    max-width: 8px;
+    height: 8px;
+    max-height: 8px;
+    margin-right: 12px;
+  }
+
+  & .dot {
+    display: inline-block;
+    width: 4px;
+    max-width: 4px;
+    height: 4px;
+    max-height: 4px;
+    margin-right: 3px;
+    border-radius: 50%;
+    background-color: #d2d2d2;
+    transition: all 0.25s;
+    cursor: pointer;
+
+    &.active {
+      background-color: #e73439;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -40,6 +40,9 @@ header {
   gap: 20px;
   list-style: none;
 }
+.header--nav li:hover {
+  text-decoration: underline;
+}
 
 footer {
   display: flex;

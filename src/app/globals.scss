@@ -41,6 +41,12 @@ header {
     gap: 20px;
     list-style: none;
   }
+
+  li {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 footer {
