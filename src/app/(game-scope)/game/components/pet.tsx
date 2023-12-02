@@ -7,20 +7,18 @@ import Image from 'next/image'
 export default function Pet() {
   const [pet, setPet] = useState<Pet>()
 
-  const reduceNeeds = useCallback(() => {
+  const reduceNeeds = useCallback(( field: 'happiness' | 'fullness' | 'thirst' ) => {
 
     setTimeout(() => {
       if (pet && pet.happiness > 0) {
-        setPet(changeStat(pet))
-        localStorage.setItem('pet', JSON.stringify(changeStat(pet)))
+        setPet(changeStat(pet, field))
+        localStorage.setItem('pet', JSON.stringify(changeStat(pet, field)))
       }
-    }, 100)
+    }, 1000)
 
   }, [pet])
 
-  const changeStat = ( prev: Pet ) => {
-    return { ...prev, happiness: prev.happiness - 1 }
-  }
+  const changeStat = ( prev: Pet, field: 'happiness' | 'fullness' | 'thirst' ) => ( { ...prev, [field]: prev[field] - 1 } )
 
   useEffect(() => {
     const petStr = localStorage.getItem('pet')
@@ -30,7 +28,6 @@ export default function Pet() {
   }, [])
 
   useEffect(() => {
-    reduceNeeds()
   }, [reduceNeeds])
 
   return (
