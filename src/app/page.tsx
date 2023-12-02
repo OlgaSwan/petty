@@ -1,9 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 import Carousel from '@component/app/components/carousel/carousel'
-import Image from 'next/image'
 import { slides } from '@component/app/shared-data/slides'
 
 import { Pet } from '@component/app/types/pet'
@@ -12,7 +13,8 @@ const createPet = ( index: number, petName: string ) => {
   const slide = slides.at(index)
   if (slide) {
     const pet: Pet = {
-      petId: slide.id,
+      image: slide.image,
+      alt: slide.alt,
       name: petName,
       diet: slide.diet,
       fullness: 100,
@@ -22,9 +24,12 @@ const createPet = ( index: number, petName: string ) => {
     }
     localStorage.setItem('pet', JSON.stringify(pet))
   }
+
 }
 
 export default function Home() {
+  const router = useRouter()
+
   const [index, setIndex] = useState(1)
   const [petName, setPetName] = useState('')
 
@@ -32,7 +37,7 @@ export default function Home() {
     <>
       <div className='naming--container'>
         <h2>Pet name</h2>
-        <input type='text' value={petName} onChange={( e ) => setPetName(e.target.value)}/>
+        <input type='text' value={petName} onChange={( e ) => setPetName(e.target.value)} maxLength={50}/>
       </div>
 
       <div className='pet-options--container'>
@@ -53,8 +58,10 @@ export default function Home() {
           )}
         </Carousel>
         <button className='play--btn' onClick={() => {
-          if (petName) createPet(index, petName)
-          else alert('Choose ur pet name!')
+          if (petName) {
+            createPet(index, petName)
+            router.push('/game')
+          } else alert('Choose ur pet name!')
         }}>
           PLAY
         </button>

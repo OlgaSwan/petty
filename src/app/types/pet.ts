@@ -1,7 +1,8 @@
 export type Diet = 'Carnivore' | 'Herbivore'
 
 export type Pet = {
-  petId: string
+  image: string
+  alt: string
   name: string
   diet: Diet
   fullness: number

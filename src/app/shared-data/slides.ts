@@ -1,6 +1,6 @@
 import { Diet } from '@component/app/types/pet'
 
-type Slide = {
+export type Slide = {
   id: string
   image: string
   alt: string
