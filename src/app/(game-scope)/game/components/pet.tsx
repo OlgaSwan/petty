@@ -11,16 +11,21 @@ export default function Pet() {
 
   const reduceNeeds = useCallback(( field: Field ) => {
 
-    setTimeout(() => {
-      if (pet && pet.happiness > 0) {
-        setPet(changeStat(pet, field))
-        localStorage.setItem('pet', JSON.stringify(changeStat(pet, field)))
-      }
-    }, 1000)
-
+    return new Promise<void>(( resolve ) => {
+      setTimeout(() => {
+        if (pet && pet.happiness > 0) {
+          setPet(( prev ) => changeStat(prev, field))
+          localStorage.setItem('pet', JSON.stringify(changeStat(pet, field)))
+        }
+        resolve()
+      }, 1000)
+    })
   }, [pet])
 
-  const changeStat = ( prev: Pet, field: Field ) => ( { ...prev, [field]: prev[field] - 1 } )
+  const changeStat = ( prev: Pet | undefined, field: Field ) => {
+    if (!prev) return
+    return { ...prev, [field]: prev[field] - 1 }
+  }
 
   useEffect(() => {
     const petStr = localStorage.getItem('pet')
@@ -30,7 +35,15 @@ export default function Pet() {
   }, [])
 
   useEffect(() => {
-    reduceNeeds('happiness')
+    const reduceAllNeeds = async () => {
+      await Promise.all([
+        reduceNeeds('happiness'),
+        reduceNeeds('fullness'),
+        reduceNeeds('thirst'),
+      ])
+    }
+
+    reduceAllNeeds()
   }, [reduceNeeds])
 
   return (
