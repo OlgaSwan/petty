@@ -4,10 +4,12 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Pet } from '@component/app/types/pet'
 import Image from 'next/image'
 
+type Field = 'happiness' | 'fullness' | 'thirst'
+
 export default function Pet() {
   const [pet, setPet] = useState<Pet>()
 
-  const reduceNeeds = useCallback(( field: 'happiness' | 'fullness' | 'thirst' ) => {
+  const reduceNeeds = useCallback(( field: Field ) => {
 
     setTimeout(() => {
       if (pet && pet.happiness > 0) {
@@ -18,7 +20,7 @@ export default function Pet() {
 
   }, [pet])
 
-  const changeStat = ( prev: Pet, field: 'happiness' | 'fullness' | 'thirst' ) => ( { ...prev, [field]: prev[field] - 1 } )
+  const changeStat = ( prev: Pet, field: Field ) => ( { ...prev, [field]: prev[field] - 1 } )
 
   useEffect(() => {
     const petStr = localStorage.getItem('pet')
@@ -28,6 +30,7 @@ export default function Pet() {
   }, [])
 
   useEffect(() => {
+    reduceNeeds('happiness')
   }, [reduceNeeds])
 
   return (

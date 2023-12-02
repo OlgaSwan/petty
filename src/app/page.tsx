@@ -24,7 +24,6 @@ const createPet = ( index: number, petName: string ) => {
     }
     localStorage.setItem('pet', JSON.stringify(pet))
   }
-
 }
 
 export default function Home() {
@@ -47,14 +46,17 @@ export default function Home() {
           setIndex(math)
         }} slides={slides} visibleItemsNumber={3}>
           {( slide ) => (
-            <Image
-              key={slide.id}
-              src={slide.image}
-              alt={slide.alt}
-              width={238}
-              height={160}
-              priority
-            />
+            //stylesheet doesnt applies
+            <div key={slide.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+              <Image
+                src={slide.image}
+                alt={slide.alt}
+                width={238}
+                height={160}
+                priority
+              />
+              <h3>{slide.alt}</h3>
+            </div>
           )}
         </Carousel>
         <button className='play--btn' onClick={() => {

@@ -40,22 +40,28 @@ header {
   justify-content: space-between;
 }
 
-.header--nav {
-  ul {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    list-style: none;
-  }
+.header--nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  list-style: none;
+}
+.header--nav li:hover {
+  text-decoration: underline;
+}
 
-  li {
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
 }
 
 footer {
   display: flex;
   justify-content: center;
 }
+
+/*# sourceMappingURL=globals.css.map */
