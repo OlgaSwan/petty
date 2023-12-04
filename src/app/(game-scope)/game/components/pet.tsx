@@ -35,11 +35,6 @@ export default function Pet() {
           <div className='pet--container'>
               <h2>{pet.name}</h2>
               <Image src={pet.image} alt={pet.alt} width={450} height={300} priority/>
-              <div>
-                  <h3>{pet.happiness}</h3>
-                  <h3>{pet.fullness}</h3>
-                  <h3>{pet.thirst}</h3>
-              </div>
           </div>
       }
     </>
