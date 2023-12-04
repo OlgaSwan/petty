@@ -10,28 +10,6 @@ import { Pet } from '@component/app/types/pet'
 export default function Pet() {
   const pet = useStore(petStore.store)
 
-  // const reduceNeeds = useCallback(( field: Field ) => {
-  //
-  //   return new Promise<void>(( resolve ) => {
-  //     setTimeout(() => {
-  //       petStore.reduceNeeds(field)
-  //       resolve()
-  //     }, 1000)
-  //   })
-  // }, [])
-  //
-  // useEffect(() => {
-  //   const reduceAllNeeds = async () => {
-  //     await Promise.all([
-  //       reduceNeeds('happiness'),
-  //       reduceNeeds('fullness'),
-  //       reduceNeeds('thirst'),
-  //     ])
-  //   }
-  //
-  //   reduceAllNeeds().then()
-  // }, [reduceNeeds])
-
   useEffect(() => {
     const localPet = localStorage.getItem(KEY)
     if (localPet) petStore.createPet(JSON.parse(localPet) as Pet)
@@ -39,13 +17,15 @@ export default function Pet() {
 
   useEffect(() => {
     let id: NodeJS.Timeout
-    const reduceHappiness = () => {
+    const reduceNeeds = () => {
       id = setTimeout(() => {
         petStore.reduceNeeds('happiness')
-        reduceHappiness()
-      }, 1000)
+        petStore.reduceNeeds('fullness')
+        petStore.reduceNeeds('thirst')
+        reduceNeeds()
+      }, 10000)
     }
-    reduceHappiness()
+    reduceNeeds()
     return () => clearTimeout(id)
   }, [])
 
