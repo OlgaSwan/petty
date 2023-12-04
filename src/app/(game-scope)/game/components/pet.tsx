@@ -1,37 +1,22 @@
 'use client'
 
-import React, { useCallback, useEffect, useState } from 'react'
-import { Pet } from '@component/app/types/pet'
+import React, { useCallback, useEffect } from 'react'
 import Image from 'next/image'
+import { useStore } from '@nanostores/react'
 
-type Field = 'happiness' | 'fullness' | 'thirst'
+import { Field, petStore } from '@component/app/pet-store'
 
 export default function Pet() {
-  const [pet, setPet] = useState<Pet>()
+  const pet = useStore(petStore.store)
 
   const reduceNeeds = useCallback(( field: Field ) => {
 
     return new Promise<void>(( resolve ) => {
       setTimeout(() => {
-        if (pet && pet.happiness > 0) {
-          setPet(( prev ) => changeStat(prev, field))
-          localStorage.setItem('pet', JSON.stringify(changeStat(pet, field)))
-        }
+        petStore.reduceNeeds(field)
         resolve()
       }, 1000)
     })
-  }, [pet])
-
-  const changeStat = ( prev: Pet | undefined, field: Field ) => {
-    if (!prev) return
-    return { ...prev, [field]: prev[field] - 1 }
-  }
-
-  useEffect(() => {
-    const petStr = localStorage.getItem('pet')
-    if (petStr) {
-      setPet(JSON.parse(petStr))
-    }
   }, [])
 
   useEffect(() => {
@@ -43,7 +28,7 @@ export default function Pet() {
       ])
     }
 
-    reduceAllNeeds()
+    reduceAllNeeds().then()
   }, [reduceNeeds])
 
   return (

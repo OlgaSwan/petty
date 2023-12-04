@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nanostores/react": "^0.7.1",
     "classnames": "^2.3.2",
+    "nanostores": "^0.9.5",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
