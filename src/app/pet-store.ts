@@ -1,15 +1,12 @@
-import { atom, onMount, action } from 'nanostores'
+'use client'
+
+import { atom, action } from 'nanostores'
 import { Pet } from '@component/app/types/pet'
 
-const KEY = 'pet'
+export const KEY = 'pet'
 export type Field = 'happiness' | 'fullness' | 'thirst'
 
 const store = atom<Pet | undefined>(undefined)
-
-onMount(store, () => {
-  const pet = localStorage.getItem(KEY)
-  if (pet) store.set(JSON.parse(pet) as Pet)
-})
 
 export const petStore = {
   store,

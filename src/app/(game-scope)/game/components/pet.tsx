@@ -1,35 +1,53 @@
 'use client'
 
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { useStore } from '@nanostores/react'
 
-import { Field, petStore } from '@component/app/pet-store'
+import { KEY, petStore } from '@component/app/pet-store'
+import { Pet } from '@component/app/types/pet'
 
 export default function Pet() {
   const pet = useStore(petStore.store)
 
-  const reduceNeeds = useCallback(( field: Field ) => {
+  // const reduceNeeds = useCallback(( field: Field ) => {
+  //
+  //   return new Promise<void>(( resolve ) => {
+  //     setTimeout(() => {
+  //       petStore.reduceNeeds(field)
+  //       resolve()
+  //     }, 1000)
+  //   })
+  // }, [])
+  //
+  // useEffect(() => {
+  //   const reduceAllNeeds = async () => {
+  //     await Promise.all([
+  //       reduceNeeds('happiness'),
+  //       reduceNeeds('fullness'),
+  //       reduceNeeds('thirst'),
+  //     ])
+  //   }
+  //
+  //   reduceAllNeeds().then()
+  // }, [reduceNeeds])
 
-    return new Promise<void>(( resolve ) => {
-      setTimeout(() => {
-        petStore.reduceNeeds(field)
-        resolve()
-      }, 1000)
-    })
+  useEffect(() => {
+    const localPet = localStorage.getItem(KEY)
+    if (localPet) petStore.createPet(JSON.parse(localPet) as Pet)
   }, [])
 
   useEffect(() => {
-    const reduceAllNeeds = async () => {
-      await Promise.all([
-        reduceNeeds('happiness'),
-        reduceNeeds('fullness'),
-        reduceNeeds('thirst'),
-      ])
+    let id: NodeJS.Timeout
+    const reduceHappiness = () => {
+      id = setTimeout(() => {
+        petStore.reduceNeeds('happiness')
+        reduceHappiness()
+      }, 1000)
     }
-
-    reduceAllNeeds().then()
-  }, [reduceNeeds])
+    reduceHappiness()
+    return () => clearTimeout(id)
+  }, [])
 
   return (
     <>

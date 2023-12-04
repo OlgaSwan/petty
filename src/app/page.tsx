@@ -8,6 +8,7 @@ import Carousel from '@component/app/components/carousel/carousel'
 import { slides } from '@component/app/shared-data/slides'
 
 import { Pet } from '@component/app/types/pet'
+import { petStore } from '@component/app/pet-store'
 
 const createPet = ( index: number, petName: string ) => {
   const slide = slides.at(index)
@@ -22,7 +23,7 @@ const createPet = ( index: number, petName: string ) => {
       happiness: 100,
       urine: 0,
     }
-    localStorage.setItem('pet', JSON.stringify(pet))
+    petStore.createPet(pet)
   }
 }
 
