@@ -10,7 +10,7 @@ import { slides } from '@component/app/shared-data/slides'
 import { Pet } from '@component/app/types/pet'
 import { petStore } from '@component/app/pet-store'
 
-const createPet = ( index: number, petName: string ) => {
+const createPet = (index: number, petName: string) => {
   const slide = slides.at(index)
   if (slide) {
     const pet: Pet = {
@@ -34,21 +34,47 @@ export default function Home() {
   const [petName, setPetName] = useState('')
 
   return (
-    <>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+
+        if (petName) {
+          createPet(index, petName)
+          router.push('/game')
+        } else alert('Choose ur pet name!')
+      }}
+    >
       <div className='naming--container'>
         <h2>Pet name</h2>
-        <input type='text' value={petName} onChange={( e ) => setPetName(e.target.value)} maxLength={50}/>
+        <input
+          type='text'
+          value={petName}
+          onChange={(e) => setPetName(e.target.value)}
+          maxLength={50}
+        />
       </div>
 
       <div className='pet-options--container'>
         <h3>Choose your pet!</h3>
-        <Carousel selectedSlide={( index ) => {
-          const math = index < slides.length ? index : 0
-          setIndex(math)
-        }} slides={slides} visibleItemsNumber={3}>
-          {( slide ) => (
+        <Carousel
+          selectedSlide={(index) => {
+            const math = index < slides.length ? index : 0
+            setIndex(math)
+          }}
+          slides={slides}
+          visibleItemsNumber={3}
+        >
+          {(slide) => (
             //stylesheet doesnt applies
-            <div key={slide.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+            <div
+              key={slide.id}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '16px',
+              }}
+            >
               <Image
                 src={slide.image}
                 alt={slide.alt}
@@ -60,15 +86,10 @@ export default function Home() {
             </div>
           )}
         </Carousel>
-        <button className='play--btn' onClick={() => {
-          if (petName) {
-            createPet(index, petName)
-            router.push('/game')
-          } else alert('Choose ur pet name!')
-        }}>
+        <button className='play--btn' type='submit'>
           PLAY
         </button>
       </div>
-    </>
+    </form>
   )
 }
