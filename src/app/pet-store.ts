@@ -10,6 +10,10 @@ const store = atom<Pet | undefined>(undefined)
 
 export const petStore = {
   store,
+  tryGetFromLocalStorage: action(store, 'tryGetFromLocalStorage', (store) => {
+    const localPet = localStorage.getItem(KEY)
+    if (localPet) store.set(JSON.parse(localPet) as Pet)
+  }),
   createPet: action(store, 'createPet', ( store, pet: Pet ) => {
     store.set(pet)
     localStorage.setItem('pet', JSON.stringify(pet))

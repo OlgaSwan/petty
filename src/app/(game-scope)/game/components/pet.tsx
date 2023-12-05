@@ -4,15 +4,14 @@ import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { useStore } from '@nanostores/react'
 
-import { KEY, petStore } from '@component/app/pet-store'
+import { petStore } from '@component/app/pet-store'
 import { Pet } from '@component/app/types/pet'
 
 export default function Pet() {
   const pet = useStore(petStore.store)
 
   useEffect(() => {
-    const localPet = localStorage.getItem(KEY)
-    if (localPet) petStore.createPet(JSON.parse(localPet) as Pet)
+    petStore.tryGetFromLocalStorage()
   }, [])
 
   useEffect(() => {
@@ -31,14 +30,18 @@ export default function Pet() {
 
   return (
     <>
-      {pet &&
-          <div className='pet--container'>
-              <h2>{pet.name}</h2>
-              <Image src={pet.image} alt={pet.alt} width={450} height={300} priority/>
-          </div>
-      }
+      {pet && (
+        <div className='pet--container'>
+          <h2>{pet.name}</h2>
+          <Image
+            src={pet.image}
+            alt={pet.alt}
+            width={450}
+            height={300}
+            priority
+          />
+        </div>
+      )}
     </>
   )
 }
-
-
