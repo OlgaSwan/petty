@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useStore } from '@nanostores/react'
 
 import { petStore } from '@component/app/pet-store'
-import { Pet } from '@component/app/types/pet'
 
 export default function Pet() {
   const pet = useStore(petStore.store)
