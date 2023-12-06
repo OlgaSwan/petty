@@ -12,6 +12,7 @@ import { useStore } from '@nanostores/react'
 import { mealList } from '@component/app/shared-data/meals'
 import { beverageList } from '@component/app/shared-data/beverages'
 import { toyList } from '@component/app/shared-data/toys'
+import Image from 'next/image'
 
 export default function Game() {
   const pet = useStore(petStore.store)
@@ -19,7 +20,9 @@ export default function Game() {
     <>
       Game {pet &&
         <div>
-            <Pet/> <ConditionsList/>
+            <Image src='/pet-home.svg' alt='Pet home' width={250} height={260}/>
+            <Pet/>
+            <ConditionsList/>
             <InteractionsList key='meals-list' title='Meals' array={mealList.filter(e => e.diet === pet.diet)}
                               onClick={petStore.eat}/>
             <InteractionsList key='beverages-list' title='Beverages' array={beverageList} onClick={petStore.drink}/>

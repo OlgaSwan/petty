@@ -1,3 +1,10 @@
+.pet-options--container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
 .slide--container {
   display: flex;
   flex-direction: column;

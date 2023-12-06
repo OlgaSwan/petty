@@ -1,10 +1,12 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import Bar from '../game/components/bar'
+import { useRouter } from 'next/navigation'
+
 import { useStore } from '@nanostores/react'
 import { petStore } from '@component/app/pet-store'
-import { useRouter } from 'next/navigation'
+
+import Bar from '../game/components/bar'
 import Pet from '../game/components/pet'
 
 function Walk() {
@@ -18,7 +20,7 @@ function Walk() {
       id = setTimeout(() => {
         petStore.walk(5)
         spreadUrine()
-      }, 500)
+      }, 1000)
     }
 
     spreadUrine()
@@ -35,15 +37,15 @@ function Walk() {
   return (
     <div
       style={{
-        width: '1000px',
+        width: '960px',
         height: '800px',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundImage: 'url("walk_backgrounds/flower_field.svg")',
+        backgroundImage: 'url("walk_backgrounds/flower_field.png")',
       }}
     >
-      {pet && <Bar title='Spreading urine' percent={pet.urine} />}
-      <Pet />
+      {pet && <Bar title='Spreading urine' percent={pet.urine}/>}
+      <Pet/>
     </div>
   )
 }

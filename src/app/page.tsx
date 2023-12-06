@@ -31,15 +31,22 @@ export default function Home() {
   const [petName, setPetName] = useState('')
 
   return (
-    <form
-      onSubmit={( e ) => {
-        e.preventDefault()
+    <form style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '100px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      maxWidth: '960px',
+    }}
+          onSubmit={( e ) => {
+            e.preventDefault()
 
-        if (petName) {
-          createPet(selectedSlide, petName)
-          router.push('/game')
-        } else alert('Choose ur pet name!')
-      }}
+            if (petName) {
+              createPet(selectedSlide, petName)
+              router.push('/game')
+            } else alert('Choose ur pet name!')
+          }}
     >
       <div className={styles['naming--container']}>
         <h2>Pet name</h2>
@@ -51,7 +58,7 @@ export default function Home() {
         />
       </div>
 
-      <div className='pet-options--container'>
+      <div className={styles['pet-options--container']}>
         <h3>Choose your pet!</h3>
         <Carousel
           value={selectedSlide}
