@@ -2,8 +2,9 @@
 
 import React, { useEffect } from 'react'
 import Image from 'next/image'
-import { useStore } from '@nanostores/react'
+import Link from 'next/link'
 
+import { useStore } from '@nanostores/react'
 import { petStore } from '@component/app/pet-store'
 
 export default function Pet() {
@@ -29,7 +30,7 @@ export default function Pet() {
 
   return (
     <>
-      {pet && (
+      {pet ? (
         <div className='pet--container'>
           <h2>{pet.name}</h2>
           <Image
@@ -40,7 +41,10 @@ export default function Pet() {
             priority
           />
         </div>
-      )}
+      ):       <div>
+      <p>Sry but u don`t have a pet :(</p>
+      <Link href='/'>Click here to create one</Link>
+    </div>}
     </>
   )
 }
