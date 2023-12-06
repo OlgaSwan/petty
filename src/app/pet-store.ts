@@ -30,13 +30,32 @@ export const petStore = {
       localStorage.setItem(KEY, JSON.stringify(newValue))
     }
   }),
-  eat: action(store, 'eat', () => {
-    alert('food!')
+  eat: action(store, 'eat', ( store, value: number ) => {
+    const pet = store.get()
+    if (pet) {
+      const newValue = { ...pet, fullness: ( pet.fullness + value ) >= 100 ? 100 : pet.fullness + value }
+      store.set(newValue)
+      localStorage.setItem(KEY, JSON.stringify(newValue))
+    }
   }),
   drink: action(store, 'drink', ( store, value: number ) => {
-    alert(`Milky! ${value}`)
+    const pet = store.get()
+    if (pet) {
+      const newValue = {
+        ...pet,
+        thirst: ( pet.thirst + value ) >= 100 ? 100 : pet.thirst + value,
+        urine: ( pet.urine + value ) >= 100 ? 100 : pet.urine + value,
+      }
+      store.set(newValue)
+      localStorage.setItem(KEY, JSON.stringify(newValue))
+    }
   }),
-  play: action(store, 'play', () => {
-    alert('Fun!')
+  play: action(store, 'play', ( store, value: number ) => {
+    const pet = store.get()
+    if (pet) {
+      const newValue = { ...pet, happiness: ( pet.happiness + value ) >= 100 ? 100 : pet.happiness + value }
+      store.set(newValue)
+      localStorage.setItem(KEY, JSON.stringify(newValue))
+    }
   }),
 }

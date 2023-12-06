@@ -26,6 +26,7 @@
   border-radius: 10px;
   min-width: 120px;
   min-height: 120px;
+  cursor: pointer;
 }
 .interaction:hover {
   outline: 2px dashed black;

@@ -16,6 +16,7 @@ export default function ConditionsList() {
               <Bar title='Happiness' percent={pet.happiness}/>
               <Bar title='Fullness' percent={pet.fullness}/>
               <Bar title='Thirst' percent={pet.thirst}/>
+              <Bar title='Urine' percent={pet.urine}/>
           </div>
       }
     </>
