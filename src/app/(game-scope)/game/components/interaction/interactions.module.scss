@@ -1,0 +1,33 @@
+.interactions--container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px 20px 20px;
+  border: 1px solid black;
+  border-radius: 14px;
+  background-color: thistle;
+}
+
+.interactions--list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.interaction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: floralwhite;
+  border-radius: 10px;
+  min-width: 120px;
+  min-height: 120px;
+
+  &:hover {
+    outline: 2px dashed black;
+  }
+}

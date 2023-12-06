@@ -5,4 +5,24 @@
   gap: 20px;
 }
 
+.slide--image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.element__selected {
+  position: relative;
+  animation: moveUpDown 2s ease-in-out infinite;
+}
+
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
 /*# sourceMappingURL=home.module.css.map */

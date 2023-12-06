@@ -7,17 +7,17 @@ type Toy = {
 export const toyList: Toy[] = [
   {
     image: '/toys/soccer-ball.svg',
-    alt: 'soccer-ball',
+    alt: 'soccer ball',
     value: 30,
   },
   {
     image: '/toys/topet.svg',
-    alt: 'to-pet',
+    alt: 'to pet',
     value: 60,
   },
   {
     image: '/toys/rugby-ball.svg',
-    alt: 'rugby-ball',
+    alt: 'rugby ball',
     value: 40,
   },
 ]

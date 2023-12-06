@@ -11,13 +11,13 @@ export const mealList: Meal[] = [
   {
     diet: 'Carnivore',
     image: '/meals/turkey-leg.svg',
-    alt: 'turkey-leg',
+    alt: 'turkey leg',
     value: 50,
   },
   {
     diet: 'Carnivore',
     image: '/meals/fried-egg.svg',
-    alt: 'fried-egg',
+    alt: 'fried egg',
     value: 20,
   },
   {

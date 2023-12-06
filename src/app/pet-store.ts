@@ -33,8 +33,8 @@ export const petStore = {
   eat: action(store, 'eat', () => {
     alert('food!')
   }),
-  drink: action(store, 'drink', () => {
-    alert('Milky!')
+  drink: action(store, 'drink', ( store, value: number ) => {
+    alert(`Milky! ${value}`)
   }),
   play: action(store, 'play', () => {
     alert('Fun!')

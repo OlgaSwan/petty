@@ -11,7 +11,7 @@ import { petStore } from '@component/app/pet-store'
 
 import styles from './styles/home.module.scss'
 
-const createPet = (selectedSlide: Slide, petName: string) => {
+const createPet = ( selectedSlide: Slide, petName: string ) => {
   const pet: Pet = {
     image: selectedSlide.image,
     alt: selectedSlide.alt,
@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={( e ) => {
         e.preventDefault()
 
         if (petName) {
@@ -46,7 +46,7 @@ export default function Home() {
         <input
           type='text'
           value={petName}
-          onChange={(e) => setPetName(e.target.value)}
+          onChange={( e ) => setPetName(e.target.value)}
           maxLength={50}
         />
       </div>
@@ -55,21 +55,21 @@ export default function Home() {
         <h3>Choose your pet!</h3>
         <Carousel
           value={selectedSlide}
-          onChange={(value) => {
+          onChange={( value ) => {
             setSelectedSlide(value)
           }}
           slides={slides}
           visibleItemsNumber={3}
         >
-          {(slide, isSelected) => (
-            //stylesheet doesnt applies
+          {( slide, isSelected ) => (
             <div
               key={slide.id}
-              className={`${styles['slide--container']} ${
-                isSelected ? styles.element__selected : ''
-              }`}
+              className={styles['slide--container']}
             >
               <Image
+                className={`${styles['slide--image']} ${
+                  isSelected ? styles.element__selected : ''
+                }`}
                 src={slide.image}
                 alt={slide.alt}
                 width={238}

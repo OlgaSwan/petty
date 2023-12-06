@@ -4,8 +4,11 @@
   align-items: center;
   gap: 20px;
 }
-.naming--container {
 
+.slide--image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .element__selected {

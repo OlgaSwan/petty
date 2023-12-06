@@ -6,7 +6,7 @@ type Beverage = {
 
 export const beverageList: Beverage[] = [
   {
-    image: '/beverages/beverage_1.svg',
+    image: '/beverages/beverage_3.svg',
     alt: 'water',
     value: 30,
   },
@@ -16,8 +16,8 @@ export const beverageList: Beverage[] = [
     value: 40,
   },
   {
-    image: '/beverages/beverage_3.svg',
-    alt: 'cosmopolitan',
+    image: '/beverages/beverage_1.svg',
+    alt: 'cocktail',
     value: 50,
   },
 ]
