@@ -14,14 +14,17 @@ import { toyList } from '@component/app/shared-data/toys'
 export default function Game() {
   const pet = useStore(petStore.store)
   return (
-    <div>Game {pet &&
-        <>
+    <>
+      Game {pet &&
+        <div>
             <Pet/> <ConditionsList/>
-            <InteractionsList key='meals-list' diet={pet.diet} array={mealList} onClick={petStore.eat}/>
-            <InteractionsList key='beverages-list' array={beverageList} onClick={petStore.drink}/>
-            <InteractionsList key='toys-list' array={toyList} onClick={petStore.play}/>
-        </>
-    } </div>
+            <InteractionsList key='meals-list' title='Meals' array={mealList.filter(e => e.diet === pet.diet)}
+                              onClick={petStore.eat}/>
+            <InteractionsList key='beverages-list' title='Beverages' array={beverageList} onClick={petStore.drink}/>
+            <InteractionsList key='toys-list' title='Toys' array={toyList} onClick={petStore.play}/>
+        </div>
+    }
+    </>
   )
 }
 
