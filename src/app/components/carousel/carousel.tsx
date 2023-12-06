@@ -7,24 +7,34 @@ import styles from './carousel.module.scss'
 
 type Props<T> = {
   slides: T[]
-  children: ( props: T ) => JSX.Element
+  children: (item: T, isSelected: boolean) => JSX.Element
   visibleItemsNumber?: number
-  selectedSlide: ( index: number ) => void
+  value: T
+  onChange: (value: T) => void
 }
 
-function Carousel<T>( { slides, children, visibleItemsNumber = 3, selectedSlide }: Props<T> ) {
-  const [start, setStart] = useState(0)
+function Carousel<T>({
+  slides,
+  children,
+  visibleItemsNumber = 3,
+  value,
+  onChange,
+}: Props<T>) {
+  const [start, setStart] = useState(() => slides.indexOf(value))
+  const [selectedItem, setSelectedItem] = useState(value)
 
   useEffect(() => {
-    selectedSlide(start + 1)
-  }, [start, selectedSlide])
+    const newIndex = start + 1 < slides.length ? start + 1 : 0
+    setSelectedItem(slides[newIndex])
+    onChange(slides[newIndex])
+  }, [start, slides, onChange])
 
   const isControlsVisible = slides.length > visibleItemsNumber
 
   const visibleItems = isControlsVisible
     ? slides
-      .concat(slides.slice(0, visibleItemsNumber))
-      .slice(start, start + visibleItemsNumber)
+        .concat(slides.slice(0, visibleItemsNumber))
+        .slice(start, start + visibleItemsNumber)
     : slides
 
   const onNextClick = () => {
@@ -36,18 +46,18 @@ function Carousel<T>( { slides, children, visibleItemsNumber = 3, selectedSlide 
   }
 
   return (
-    <div>
+    <>
       <div className={styles.slides}>
         {isControlsVisible && (
-          <PrevButton onClick={onPrevClick} className={styles.navButtons}/>
+          <PrevButton onClick={onPrevClick} className={styles.navButtons} />
         )}
 
         <ul className={styles.list}>
-          {visibleItems.map(( slide ) => ( children ? children(slide) : null ))}
+          {visibleItems.map((item) => children(item, item === selectedItem))}
         </ul>
 
         {isControlsVisible && (
-          <NextButton onClick={onNextClick} className={styles.navButtons}/>
+          <NextButton onClick={onNextClick} className={styles.navButtons} />
         )}
       </div>
 
@@ -56,11 +66,11 @@ function Carousel<T>( { slides, children, visibleItemsNumber = 3, selectedSlide 
           <Dots
             items={slides.length}
             active={start}
-            onClick={( active ) => setStart(active)}
+            onClick={(active) => setStart(active)}
           />
         </div>
       )}
-    </div>
+    </>
   )
 }
 
