@@ -21,6 +21,7 @@ const createPet = ( selectedSlide: Slide, petName: string ) => {
     thirst: 100,
     happiness: 100,
     urine: 0,
+    balance: 100,
   }
   petStore.createPet(pet)
 }

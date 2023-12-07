@@ -32,12 +32,14 @@ a {
   display: flex;
   flex-direction: column;
   max-width: 960px;
+  min-width: 100%;
 }
 
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 20px;
 }
 
 .header--nav ul {
@@ -45,6 +47,9 @@ header {
   flex-direction: row;
   gap: 20px;
   list-style: none;
+}
+.header--nav li {
+  display: flex;
 }
 .header--nav li:hover {
   text-decoration: underline;

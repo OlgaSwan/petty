@@ -7,15 +7,23 @@ interface InteractionCardProps {
   image: string
   alt: string
   value: number
-  onClick: ( value: number ) => void
+  price: number
+  onClick: ( value: number, price: number ) => void
 }
 
-export default function InteractionCard( { image, alt, value, onClick }: InteractionCardProps ) {
+export default function InteractionCard( { image, alt, value, price, onClick }: InteractionCardProps ) {
   return (
     <div className={styles['interaction']}>
-      <h5>{alt}</h5>
+      <div className={styles['interaction--meta']}>
+        <h5>{alt}</h5>
+        {price === 0 ? <p>free</p> :
+          <div className={styles['interaction--price']}>
+            <Image src={'/coin.svg'} alt='Coin' width={20} height={20}/>
+            <p>{price}</p>
+          </div>}
+      </div>
       <Image src={image} alt={alt} width={80} height={80}
-             onClick={() => onClick(value)}/>
+             onClick={() => onClick(value, price)}/>
     </div>
   )
 }

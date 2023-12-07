@@ -6,6 +6,7 @@ import { metaTitle } from '@component/app/shared-data/shared-data'
 
 import './styles/globals.css'
 import Link from 'next/link'
+import Balance from '@component/app/components/balance'
 
 const pixelify = Pixelify_Sans({ weight: ['400', '600'], subsets: ['latin'] })
 
@@ -28,11 +29,12 @@ export default function RootLayout( {
         <nav className='header--nav'>
           <ul>
             <li>
-              <Link href='/game'>Home</Link>{' '}
+              <Link href='/game'>Home</Link>
             </li>
             <li>
               <Link href='/about'>About</Link>
             </li>
+            <Balance/>
           </ul>
         </nav>
       </header>

@@ -11,7 +11,7 @@
 .interactions--list {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 10px;
   align-items: center;
 }
 
@@ -24,12 +24,24 @@
   padding: 10px;
   background-color: floralwhite;
   border-radius: 10px;
-  min-width: 120px;
-  min-height: 120px;
+  min-width: 150px;
+  min-height: 150px;
   cursor: pointer;
 }
 .interaction:hover {
   outline: 2px dashed black;
+}
+
+.interaction--meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.interaction--price {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 /*# sourceMappingURL=interactions.module.css.map */

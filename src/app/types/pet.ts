@@ -9,4 +9,5 @@ export type Pet = {
   thirst: number
   happiness: number
   urine: number
+  balance: number
 }

@@ -19,6 +19,7 @@ function Walk() {
     function spreadUrine() {
       id = setTimeout(() => {
         petStore.walk(5)
+        petStore.earn(5)
         spreadUrine()
       }, 1000)
     }

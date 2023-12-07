@@ -7,8 +7,8 @@ import styles from './/interactions.module.scss'
 
 interface InteractionsListProps {
   title: string
-  array: readonly { image: string, alt: string, value: number, diet?: Diet }[]
-  onClick: ( value: number ) => void
+  array: readonly { image: string, alt: string, value: number, price: number, diet?: Diet }[]
+  onClick: ( value: number, price: number ) => void
 }
 
 export default function InteractionsList( { title, array, onClick }: InteractionsListProps ) {
@@ -18,7 +18,8 @@ export default function InteractionsList( { title, array, onClick }: Interaction
         <h4>{title}</h4>
         <div className={styles['interactions--list']}>
           {array.map(( e, index ) => <InteractionCard key={index} image={e.image} alt={e.alt} value={e.value}
-                                                      onClick={onClick}/>)}
+                                                      price={e.price}
+                                                      onClick={( value, price ) => onClick(value, price)}/>)}
         </div>
       </div>
     </>
