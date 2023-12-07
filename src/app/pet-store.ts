@@ -8,6 +8,8 @@ export type Field = 'happiness' | 'fullness' | 'thirst'
 
 const store = atom<Pet | undefined>(undefined)
 
+store.listen(value => !value ? localStorage.removeItem('pet') : localStorage.setItem('pet', JSON.stringify(value)))
+
 export const petStore = {
   store,
   tryGetFromLocalStorage: action(store, 'tryGetFromLocalStorage', ( store ) => {
@@ -20,14 +22,12 @@ export const petStore = {
   }),
   createPet: action(store, 'createPet', ( store, pet: Pet ) => {
     store.set(pet)
-    localStorage.setItem('pet', JSON.stringify(pet))
   }),
   reduceNeeds: action(store, 'reduceNeeds', ( store, field: Field ) => {
     const pet = store.get()
     if (pet && pet[field] > 0) {
       const newValue = { ...pet, [field]: pet[field] - 1 }
       store.set(newValue)
-      localStorage.setItem(KEY, JSON.stringify(newValue))
     }
   }),
   eat: action(store, 'eat', ( store, value: number, price: number ) => {
@@ -39,7 +39,6 @@ export const petStore = {
         balance: pet.balance - price,
       }
       store.set(newValue)
-      localStorage.setItem(KEY, JSON.stringify(newValue))
     }
   }),
   drink: action(store, 'drink', ( store, value: number, price: number ) => {
@@ -52,7 +51,6 @@ export const petStore = {
         balance: pet.balance - price,
       }
       store.set(newValue)
-      localStorage.setItem(KEY, JSON.stringify(newValue))
     }
   }),
   walk: action(store, 'walk', ( store, value: number ) => {
@@ -64,7 +62,6 @@ export const petStore = {
         urine: newUrineValue,
       }
       store.set(newValue)
-      localStorage.setItem(KEY, JSON.stringify(newValue))
     }
   }),
   play: action(store, 'play', ( store, value: number, price: number ) => {
@@ -76,7 +73,6 @@ export const petStore = {
         balance: pet.balance - price,
       }
       store.set(newValue)
-      localStorage.setItem(KEY, JSON.stringify(newValue))
     }
   }),
   earn: action(store, 'earn', ( store, value: number ) => {
@@ -87,7 +83,6 @@ export const petStore = {
         balance: pet.balance + value,
       }
       store.set(newValue)
-      localStorage.setItem(KEY, JSON.stringify(newValue))
     }
   }),
 }
