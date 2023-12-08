@@ -28,26 +28,26 @@ const createPet = ( selectedSlide: Slide, petName: string ) => {
 
 export default function Home() {
   const router = useRouter()
-  const [selectedSlide, setSelectedSlide] = useState(slides[1])
+  const [selectedSlide, setSelectedSlide] = useState(slides[0])
   const [petName, setPetName] = useState('')
 
   return (
     <form style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '100px',
-      justifyContent: 'center',
-      alignItems: 'center',
-      maxWidth: '960px',
-    }}
-          onSubmit={( e ) => {
-            e.preventDefault()
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '100px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        maxWidth: '960px',
+      }}
+      onSubmit={( e ) => {
+        e.preventDefault()
 
-            if (petName) {
-              createPet(selectedSlide, petName)
-              router.push('/game')
-            } else alert('Choose ur pet name!')
-          }}
+        if (petName) {
+          createPet(selectedSlide, petName)
+          router.push('/game')
+        } else alert('Choose ur pet name!')
+      }}
     >
       <div className={styles['naming--container']}>
         <h2>Pet name</h2>
