@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["carousel.module.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;;;AAGF;EACE;EACA;EACA;;AAEA;EACE;;AAGF;EACE;;;AAIJ;EACE;EACA;EACA;EACA;;;AAGF;EACE;EACA","file":"carousel.module.css"}
+{"version":3,"sourceRoot":"","sources":["carousel.module.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;;;AAGF;EACE;EACA;EACA;;AAEA;EACE;;AAGF;EACE;;;AAIJ;EACE;EACA;EACA;EACA;;AAGE;EACE;;;AAKN;EACE;EACA","file":"carousel.module.css"}
