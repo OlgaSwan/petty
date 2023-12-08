@@ -1,8 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useStore } from '@nanostores/react'
 import { petStore } from '@component/app/pet-store'
 
@@ -12,6 +11,9 @@ import Pet from '../game/components/pet'
 function Walk() {
   const pet = useStore(petStore.store)
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  const place = searchParams.get('place')
 
   useEffect(() => {
     let id: NodeJS.Timeout
@@ -42,11 +44,11 @@ function Walk() {
         height: '800px',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundImage: 'url("walk_backgrounds/flower_field.png")',
+        backgroundImage: `url("${place}")`,
       }}
     >
-      {pet && <Bar title='Spreading urine' percent={pet.urine}/>}
-      <Pet/>
+      {pet && <Bar title='Spreading urine' percent={pet.urine} />}
+      <Pet />
     </div>
   )
 }

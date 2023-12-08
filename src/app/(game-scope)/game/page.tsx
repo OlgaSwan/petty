@@ -43,7 +43,7 @@ export default function Game() {
             array={toyList}
             onClick={petStore.play}
           />
-          <PlaceToWalkSelector />
+          {pet.urine > 50 && <PlaceToWalkSelector />}
         </div>
       )}
     </>

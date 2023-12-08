@@ -2,9 +2,12 @@ import Carousel from '@component/app/components/carousel/carousel'
 import { walkBackgroundList } from '@component/app/shared-data/walkBackgrounds'
 import Image from 'next/image'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function PlaceToWalkSelector() {
+  const router = useRouter()
   const [place, setPlace] = useState(walkBackgroundList[0])
+
   return (
     <div>
       <p>Do you want to spread urine and earn some money?</p>
@@ -18,6 +21,7 @@ export default function PlaceToWalkSelector() {
       >
         {(slide, isSelected) => (
           <Image
+            style={{ borderRadius: '10px' }}
             key={slide}
             src={slide}
             alt={slide}
@@ -27,6 +31,7 @@ export default function PlaceToWalkSelector() {
           />
         )}
       </Carousel>
+      <button onClick={() => router.push(`/walk?place=${place}`)}>Go for a walk</button>
     </div>
   )
 }
