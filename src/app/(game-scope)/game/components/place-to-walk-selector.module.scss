@@ -3,4 +3,17 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;
+
+    animation: slideFromRight 1s ease-out forwards;
+    /* Start position */
+    transform: translateX(100%);
 }
+
+@keyframes slideFromRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
