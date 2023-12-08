@@ -24,10 +24,14 @@ function Carousel<T>({
   const [selectedItem, setSelectedItem] = useState(value)
 
   useEffect(() => {
-    const newIndex = start + 1 < slides.length ? start + 1 : 0
+    const center = Math.floor(visibleItemsNumber / 2)
+    const newIndex =
+      start + center < slides.length
+        ? start + center
+        : (start + center) - slides.length 
     setSelectedItem(slides[newIndex])
     onChange(slides[newIndex])
-  }, [start, slides, onChange])
+  }, [start, slides, onChange, visibleItemsNumber])
 
   const isControlsVisible = slides.length > visibleItemsNumber
 
