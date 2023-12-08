@@ -9,7 +9,7 @@ import { petStore } from '@component/app/pet-store'
 
 export default function Pet() {
   const pet = useStore(petStore.store)
-
+  console.log(pet)
   useEffect(() => {
     petStore.tryGetFromLocalStorage()
   }, [])
@@ -41,10 +41,12 @@ export default function Pet() {
             priority
           />
         </div>
-      ):       <div>
-      <p>Sry but u don`t have a pet :(</p>
-      <Link href='/'>Click here to create one</Link>
-    </div>}
+      ) : (
+        <div>
+          <p>Sry but u don`t have a pet :(</p>
+          <Link href='/'>Click here to create one</Link>
+        </div>
+      )}
     </>
   )
 }
