@@ -9,7 +9,7 @@ import { petStore } from '@component/app/pet-store'
 
 export default function Pet() {
   const pet = useStore(petStore.store)
-  console.log(pet)
+  
   useEffect(() => {
     petStore.tryGetFromLocalStorage()
   }, [])
