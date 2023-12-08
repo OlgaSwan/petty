@@ -23,6 +23,7 @@
   height: 24px;
   margin: 0 32px;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     path {
