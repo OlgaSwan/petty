@@ -33,21 +33,21 @@ export default function Home() {
 
   return (
     <form style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '100px',
-        justifyContent: 'center',
-        alignItems: 'center',
-        maxWidth: '960px',
-      }}
-      onSubmit={( e ) => {
-        e.preventDefault()
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '100px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      maxWidth: '960px',
+    }}
+          onSubmit={( e ) => {
+            e.preventDefault()
 
-        if (petName) {
-          createPet(selectedSlide, petName)
-          router.push('/game')
-        } else alert('Choose ur pet name!')
-      }}
+            if (petName) {
+              createPet(selectedSlide, petName)
+              router.push('/game')
+            } else alert('Choose ur pet name!')
+          }}
     >
       <div className={styles['naming--container']}>
         <h2>Pet name</h2>
@@ -88,8 +88,8 @@ export default function Home() {
             </div>
           )}
         </Carousel>
-        <button className='play--btn' type='submit'>
-          PLAY
+        <button className={styles['play--btn']} type='submit'>
+          <Image className={styles['play--image']} src={'/buttons/play-btn.svg'} alt='Play' width={160} height={66}/>
         </button>
       </div>
     </form>

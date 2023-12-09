@@ -7,6 +7,7 @@ import { metaTitle } from '@component/app/shared-data/shared-data'
 import './styles/globals.css'
 import Link from 'next/link'
 import Balance from '@component/app/components/balance'
+import VolumeBtn from '@component/app/components/volume-btn'
 
 const pixelify = Pixelify_Sans({ weight: ['400', '600'], subsets: ['latin'] })
 
@@ -25,7 +26,10 @@ export default function RootLayout( {
     <body className={pixelify.className}>
     <div className='body--container'>
       <header>
-        <Link href='/'>Petty</Link>
+        <div className='logo--container'>
+          <Link href='/'>Petty</Link>
+          <VolumeBtn/>
+        </div>
         <nav className='header--nav'>
           <ul>
             <li>

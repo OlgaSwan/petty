@@ -11,8 +11,8 @@ export default function Balance() {
   return (
     <>
       {pet &&
-          <li>
-              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '5px' }}>Balance:
+          <li style={{ textDecoration: 'none' }}>
+              <div className='balance'><span>Balance:</span>
                   <Image src={'/coin.svg'} alt='Coin' width={20}
                          height={20}/>
                 {pet.balance}

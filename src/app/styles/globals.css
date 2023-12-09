@@ -42,6 +42,21 @@ header {
   font-size: 20px;
 }
 
+.logo--container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.volume--btn {
+  transition: 0.8ms ease-in;
+}
+.volume--btn:active {
+  position: relative;
+  top: 2px;
+}
+
 .header--nav ul {
   display: flex;
   flex-direction: row;
@@ -52,6 +67,17 @@ header {
   display: flex;
 }
 .header--nav li:hover {
+  text-decoration: underline;
+}
+
+.balance {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.balance span:hover {
   text-decoration: underline;
 }
 

@@ -31,3 +31,17 @@
     transform: translateY(-20px);
   }
 }
+
+.play--btn {
+  background-color: transparent;
+  border: none;
+}
+
+.play--image {
+  transition: 0.8ms ease-in;
+
+    &:active {
+      position: relative;
+      top: 2px;
+    }
+}
