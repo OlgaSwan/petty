@@ -31,6 +31,10 @@
 .interaction:hover {
   outline: 2px dashed black;
 }
+.interaction:active {
+  position: relative;
+  top: 2px;
+}
 
 .interaction--meta {
   display: flex;

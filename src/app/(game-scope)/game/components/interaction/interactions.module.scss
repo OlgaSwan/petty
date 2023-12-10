@@ -31,6 +31,11 @@
   &:hover {
     outline: 2px dashed black;
   }
+
+  &:active {
+    position: relative;
+    top: 2px;
+  }
 }
 
 .interaction--meta {
