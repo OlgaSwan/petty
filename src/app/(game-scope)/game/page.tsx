@@ -13,22 +13,22 @@ import { mealList } from '@component/app/shared-data/meals'
 import { beverageList } from '@component/app/shared-data/beverages'
 import { toyList } from '@component/app/shared-data/toys'
 import Image from 'next/image'
-import PlaceToWalkSelector from './components/place-to-walk-selector'
+import PlaceToWalkSelector from './components/place-to-walk-selector/place-to-walk-selector'
 
 export default function Game() {
   const pet = useStore(petStore.store)
   return (
     <>
-      <Pet />
+      <Pet/>
       {pet && (
         <div>
-          <Image src='/pet-home.svg' alt='Pet home' width={250} height={260} />
+          <Image src='/pet-home.svg' alt='Pet home' width={250} height={260}/>
 
-          <ConditionsList />
+          <ConditionsList/>
           <InteractionsList
             key='meals-list'
             title='Meals'
-            array={mealList.filter((e) => e.diet === pet.diet)}
+            array={mealList.filter(( e ) => e.diet === pet.diet)}
             onClick={petStore.eat}
           />
           <InteractionsList
@@ -43,7 +43,7 @@ export default function Game() {
             array={toyList}
             onClick={petStore.play}
           />
-          {pet.urine > 50 && <PlaceToWalkSelector />}
+          {pet.urine > 50 && <PlaceToWalkSelector/>}
         </div>
       )}
     </>
