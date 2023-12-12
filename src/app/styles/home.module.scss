@@ -1,3 +1,18 @@
+.pet--form {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  justify-content: center;
+  align-items: center;
+  max-width: 960px;
+}
+
+.naming--container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .pet-options--container {
   display: flex;
   flex-direction: column;
@@ -40,8 +55,8 @@
 .play--image {
   transition: 0.8ms ease-in;
 
-    &:active {
-      position: relative;
-      top: 2px;
-    }
+  &:active {
+    position: relative;
+    top: 2px;
+  }
 }

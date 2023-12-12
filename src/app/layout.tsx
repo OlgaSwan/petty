@@ -8,6 +8,7 @@ import './styles/globals.css'
 import Link from 'next/link'
 import Balance from '@component/app/components/balance'
 import VolumeBtn from '@component/app/components/volume-btn'
+import Image from 'next/image'
 
 const pixelify = Pixelify_Sans({ weight: ['400', '600'], subsets: ['latin'] })
 
@@ -27,6 +28,7 @@ export default function RootLayout( {
     <div className='body--container'>
       <header>
         <div className='logo--container'>
+          <Image src={'/heart.svg'} alt='Logo' width={30} height={30}/>
           <Link href='/'>Petty</Link>
           <VolumeBtn/>
         </div>

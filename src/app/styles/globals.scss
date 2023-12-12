@@ -1,6 +1,5 @@
-:root {
-  --border-radius: 12px;
-}
+$border-radius: 8px;
+$input-border: #8b8a8b;
 
 * {
   box-sizing: border-box;
@@ -39,6 +38,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 20px 40px;
   font-size: 20px;
 }
 
@@ -96,6 +96,15 @@ main {
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+}
+
+input {
+  font-size: 16px;
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid $input-border;
+  border-radius: $border-radius;
 }
 
 footer {

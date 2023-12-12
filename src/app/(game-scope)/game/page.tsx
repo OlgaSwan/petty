@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import Pet from '@component/app/(game-scope)/game/components/pet'
+import Pet from '@component/app/(game-scope)/game/components/pet/pet'
 import ConditionsList from '@component/app/(game-scope)/game/components/conditions-list'
 import InteractionsList from '@component/app/(game-scope)/game/components/interaction/interactions-list'
 

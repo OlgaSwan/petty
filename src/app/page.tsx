@@ -15,7 +15,7 @@ const createPet = ( selectedSlide: Slide, petName: string ) => {
   const pet: Pet = {
     image: selectedSlide.image,
     alt: selectedSlide.alt,
-    name: petName,
+    name: petName.trim(),
     diet: selectedSlide.diet,
     fullness: 100,
     thirst: 100,
@@ -26,33 +26,27 @@ const createPet = ( selectedSlide: Slide, petName: string ) => {
   petStore.createPet(pet)
 }
 
-export default function Home() {
+export default function CreatePet() {
   const router = useRouter()
   const [selectedSlide, setSelectedSlide] = useState(slides[0])
   const [petName, setPetName] = useState('')
 
   return (
-    <form style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '100px',
-      justifyContent: 'center',
-      alignItems: 'center',
-      maxWidth: '960px',
-    }}
+    <form className={styles['pet--form']}
           onSubmit={( e ) => {
             e.preventDefault()
 
-            if (petName) {
+            if (petName.trim()) {
               createPet(selectedSlide, petName)
               router.push('/game')
-            } else alert('Choose ur pet name!')
+            } else alert('Choose your pet name!')
           }}
     >
       <div className={styles['naming--container']}>
         <h2>Pet name</h2>
         <input
           type='text'
+          placeholder='Enter your pet name'
           value={petName}
           onChange={( e ) => setPetName(e.target.value)}
           maxLength={50}
@@ -67,7 +61,6 @@ export default function Home() {
             setSelectedSlide(value)
           }}
           slides={slides}
-          visibleItemsNumber={3}
         >
           {( slide, isSelected ) => (
             <div

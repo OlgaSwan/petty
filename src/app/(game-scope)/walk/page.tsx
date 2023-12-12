@@ -6,7 +6,7 @@ import { useStore } from '@nanostores/react'
 import { petStore } from '@component/app/pet-store'
 
 import Bar from '../game/components/bar'
-import Pet from '../game/components/pet'
+import Pet from '../game/components/pet/pet'
 
 function Walk() {
   const pet = useStore(petStore.store)
@@ -47,8 +47,8 @@ function Walk() {
         backgroundImage: `url("${place}")`,
       }}
     >
-      {pet && <Bar title='Spreading urine' percent={pet.urine} />}
-      <Pet />
+      {pet && <Bar title='Spreading urine' percent={pet.urine}/>}
+      <Pet/>
     </div>
   )
 }
