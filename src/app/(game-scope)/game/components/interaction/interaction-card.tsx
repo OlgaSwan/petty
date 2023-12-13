@@ -8,16 +8,16 @@ interface InteractionCardProps {
   alt: string
   value: number
   price: number
-  onClick: (value: number, price: number) => void
+  onClick: ( value: number, price: number ) => void
 }
 
-export default function InteractionCard({
+export default function InteractionCard( {
   image,
   alt,
   value,
   price,
   onClick,
-}: InteractionCardProps) {
+}: InteractionCardProps ) {
   return (
     <div
       className={styles['interaction']}
@@ -29,12 +29,12 @@ export default function InteractionCard({
           <p>free</p>
         ) : (
           <div className={styles['interaction--price']}>
-            <Image src={'/coin.svg'} alt='Coin' width={20} height={20} />
+            <Image src={'/game-asset/coin.svg'} alt='Coin' width={20} height={20}/>
             <p>{price}</p>
           </div>
         )}
       </div>
-      <Image src={image} alt={alt} width={80} height={80} />
+      <Image src={image} alt={alt} width={80} height={80}/>
     </div>
   )
 }

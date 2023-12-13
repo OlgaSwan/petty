@@ -1,16 +1,21 @@
 .pet--form {
   display: flex;
   flex-direction: column;
-  gap: 60px;
   justify-content: center;
   align-items: center;
   max-width: 960px;
+}
+
+.heart {
+  align-self: start;
+  margin-left: 10em;
 }
 
 .naming--container {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 60px;
 }
 
 .pet-options--container {
@@ -59,4 +64,9 @@
     position: relative;
     top: 2px;
   }
+}
+
+.poo {
+  align-self: end;
+  margin-right: 10em;
 }

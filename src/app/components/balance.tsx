@@ -13,7 +13,7 @@ export default function Balance() {
       {pet &&
           <li style={{ textDecoration: 'none' }}>
               <div className='balance'><span>Balance:</span>
-                  <Image src={'/coin.svg'} alt='Coin' width={20}
+                  <Image src={'/game-asset/coin.svg'} alt='Coin' width={20}
                          height={20}/>
                 {pet.balance}
               </div>

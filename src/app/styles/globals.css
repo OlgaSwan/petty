@@ -37,6 +37,7 @@ header {
   justify-content: space-between;
   padding: 20px 40px;
   font-size: 20px;
+  border-bottom: 2px dashed black;
 }
 
 .logo--container {

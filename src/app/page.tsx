@@ -10,12 +10,14 @@ import { Pet } from '@component/app/types/pet'
 import { petStore } from '@component/app/pet-store'
 
 import styles from './styles/home.module.scss'
+import AnimatedHeartBeating from '@component/app/components/animated-heart-beating'
+import AnimatedSwap from '@component/app/components/animated-swap'
 
 const createPet = ( selectedSlide: Slide, petName: string ) => {
   const pet: Pet = {
     image: selectedSlide.image,
     alt: selectedSlide.alt,
-    name: petName.trim(),
+    name: petName,
     diet: selectedSlide.diet,
     fullness: 100,
     thirst: 100,
@@ -39,9 +41,13 @@ export default function CreatePet() {
             if (petName.trim()) {
               createPet(selectedSlide, petName)
               router.push('/game')
-            } else alert('Choose your pet name!')
+            } else {
+              createPet(selectedSlide, selectedSlide.alt)
+              router.push('/game')
+            }
           }}
     >
+      <AnimatedHeartBeating image={'/game-asset/heart.svg'} alt='Heart beating' style='heart'/>
       <div className={styles['naming--container']}>
         <h2>Pet name</h2>
         <input
@@ -85,6 +91,7 @@ export default function CreatePet() {
           <Image className={styles['play--image']} src={'/buttons/play-btn.svg'} alt='Play' width={160} height={66}/>
         </button>
       </div>
+      <AnimatedSwap images={['/game-asset/poo_1.svg', '/game-asset/poo_2.svg']} alt='Poo' style='poo'/>
     </form>
   )
 }

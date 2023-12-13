@@ -28,7 +28,7 @@ export default function RootLayout( {
     <div className='body--container'>
       <header>
         <div className='logo--container'>
-          <Image src={'/heart.svg'} alt='Logo' width={30} height={30}/>
+          <Image src={'/game-asset/heart.svg'} alt='Logo' width={30} height={30}/>
           <Link href='/'>Petty</Link>
           <VolumeBtn/>
         </div>
