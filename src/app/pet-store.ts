@@ -1,6 +1,6 @@
 'use client'
 
-import { atom, action } from 'nanostores'
+import { atom, action, onAction } from 'nanostores'
 import { Pet } from '@component/app/types/pet'
 
 export const KEY = 'pet'
@@ -10,6 +10,11 @@ const store = atom<Pet | undefined>(undefined)
 
 store.listen(value => !value ? localStorage.removeItem('pet') : localStorage.setItem('pet', JSON.stringify(value)))
 
+onAction(store, ( { actionName } ) => {
+  if (actionName === 'eat' || actionName === 'drink' || actionName === 'play') {
+    console.log(`${actionName}`)
+  }
+})
 export const petStore = {
   store,
   tryGetFromLocalStorage: action(store, 'tryGetFromLocalStorage', ( store ) => {

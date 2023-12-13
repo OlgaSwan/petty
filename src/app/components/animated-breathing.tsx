@@ -29,7 +29,7 @@ export default function AnimatedBreathing( {
       gsap.from(heartRef.current, {
         scale: 1.01,
         duration: 4,
-        ease: 'power4.in',
+        ease: 'expoScale',
       })
       gsap.to(heartRef.current, {
         scale: 1,

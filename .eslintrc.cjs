@@ -9,7 +9,6 @@ module.exports = {
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs'],
     rules: {
-        'no-console': 'warn',
         'quotes': ['off', 'single'],
         'jsx-quotes': ['off', 'prefer-single'],
         'indent': ['off', 2],

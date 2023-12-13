@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 import { useStore } from '@nanostores/react'
@@ -9,6 +9,7 @@ import AnimatedBreathing from '@component/app/components/animated-breathing'
 
 export default function Pet() {
   const pet = useStore(petStore.store)
+  const petRef = useRef(null)
 
   useEffect(() => {
     petStore.tryGetFromLocalStorage()
@@ -33,7 +34,9 @@ export default function Pet() {
       {pet ? (
         <div className='pet--container'>
           <h2>{pet.name}</h2>
-          <AnimatedBreathing image={pet.image} alt={pet.alt} width={450} height={300}/>
+          <div ref={petRef} style={{ margin: '0', padding: '0' }}>
+            <AnimatedBreathing image={pet.image} alt={pet.alt} width={450} height={300}/>
+          </div>
         </div>
       ) : (
         <div>
