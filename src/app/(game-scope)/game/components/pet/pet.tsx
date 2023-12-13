@@ -2,9 +2,12 @@
 
 import React, { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import gsap from 'gsap'
 
+import { onAction } from 'nanostores'
 import { useStore } from '@nanostores/react'
 import { petStore } from '@component/app/pet-store'
+
 import AnimatedBreathing from '@component/app/components/animated-breathing'
 
 export default function Pet() {
@@ -28,6 +31,16 @@ export default function Pet() {
     reduceNeeds()
     return () => clearTimeout(id)
   }, [])
+
+  const animatePetJump = () => {
+    gsap.fromTo(petRef.current, { y: -50, duration: 1, ease: 'expo.in' }, { y: 0, duration: 1, ease: 'expo.out' })
+  }
+
+  onAction(petStore.store, ( { actionName } ) => {
+    if (actionName === 'eat' || actionName === 'drink' || actionName === 'play') {
+      animatePetJump()
+    }
+  })
 
   return (
     <>
