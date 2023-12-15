@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px 20px 20px 20px;
+  padding: 10px;
   border: 1px solid black;
   border-radius: 14px;
   background-color: thistle;
@@ -20,12 +20,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 6px;
+  padding: 6px;
   background-color: floralwhite;
   border-radius: 10px;
-  min-width: 150px;
-  min-height: 150px;
+  width: 86px;
+  height: 86px;
   cursor: pointer;
 }
 .interaction:hover {
@@ -39,13 +39,13 @@
 .interaction--meta {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 2px;
 }
 
 .interaction--price {
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 2px;
 }
 
 /*# sourceMappingURL=interactions.module.css.map */

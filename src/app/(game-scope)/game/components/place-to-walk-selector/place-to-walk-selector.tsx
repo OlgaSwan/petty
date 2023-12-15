@@ -11,7 +11,7 @@ export default function PlaceToWalkSelector() {
 
   return (
     <div className={styles.container}>
-      <p>Do you want to earn some coins?</p>
+      <h4>Wanna earn some coins?</h4>
       <Carousel
         value={place}
         onChange={( value ) => {

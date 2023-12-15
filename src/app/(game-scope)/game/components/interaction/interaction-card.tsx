@@ -34,7 +34,7 @@ export default function InteractionCard( {
           </div>
         )}
       </div>
-      <Image src={image} alt={alt} width={80} height={80}/>
+      <Image src={image} alt={alt} width={36} height={36}/>
     </div>
   )
 }

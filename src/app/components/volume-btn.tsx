@@ -19,7 +19,7 @@ function VolumeBtn() {
   }, [])
 
   return (
-    <Image className='volume--btn' src={volume ? '/buttons/volume-off.svg' : '/buttons/volume-on.svg'} alt='Volume on'
+    <Image className='header--btn' src={volume ? '/buttons/volume-off.svg' : '/buttons/volume-on.svg'} alt='Volume'
            width={30} height={30} onClick={saveVolumeLocally}/>
   )
 }

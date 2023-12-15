@@ -15,36 +15,44 @@ import { mealList } from '@component/app/shared-data/meals'
 import { beverageList } from '@component/app/shared-data/beverages'
 import { toyList } from '@component/app/shared-data/toys'
 
+import styles from './game.module.scss'
+
 export default function Game() {
   const pet = useStore(petStore.store)
   return (
     <>
-      <Image src='/pet-home.svg' alt='Pet home' width={250} height={260}/>
-      <Pet/>
-      {pet && (
-        <div>
-          <ConditionsList/>
-          <InteractionsList
-            key='meals-list'
-            title='Meals'
-            array={mealList.filter(( e ) => e.diet === pet.diet)}
-            onClick={petStore.eat}
-          />
-          <InteractionsList
-            key='beverages-list'
-            title='Beverages'
-            array={beverageList}
-            onClick={petStore.drink}
-          />
-          <InteractionsList
-            key='toys-list'
-            title='Toys'
-            array={toyList}
-            onClick={petStore.play}
-          />
-          {pet.urine > 50 && <PlaceToWalkSelector/>}
-        </div>
-      )}
+      <div className={styles['game--container']}>
+        {pet && (
+          <div className={styles['interactions--container']}>
+            <ConditionsList/>
+            <InteractionsList
+              key='meals-list'
+              title='Meals'
+              array={mealList.filter(( e ) => e.diet === pet.diet)}
+              onClick={petStore.eat}
+            />
+            <InteractionsList
+              key='beverages-list'
+              title='Beverages'
+              array={beverageList}
+              onClick={petStore.drink}
+            />
+            <InteractionsList
+              key='toys-list'
+              title='Toys'
+              array={toyList}
+              onClick={petStore.play}
+            />
+          </div>
+        )}
+        <Pet/>
+        {pet && (
+          <div className={styles['places--container']}>
+            <Image src='/pet-home.svg' alt='Pet home' width={200} height={208} style={{ alignSelf: 'center' }}/>
+            {pet.urine > 50 && <PlaceToWalkSelector/>}
+          </div>
+        )}
+      </div>
     </>
   )
 }

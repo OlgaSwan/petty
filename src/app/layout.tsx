@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Balance from '@component/app/components/balance'
 import VolumeBtn from '@component/app/components/volume-btn'
 import Image from 'next/image'
+import InfoBtn from '@component/app/components/info-btn'
 
 const pixelify = Pixelify_Sans({ weight: ['400', '600'], subsets: ['latin'] })
 
@@ -31,6 +32,7 @@ export default function RootLayout( {
           <Image src={'/game-asset/heart.svg'} alt='Logo' width={30} height={30}/>
           <Link href='/'>Petty</Link>
           <VolumeBtn/>
+          <InfoBtn/>
         </div>
         <nav className='header--nav'>
           <ul>

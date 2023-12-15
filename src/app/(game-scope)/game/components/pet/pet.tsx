@@ -8,7 +8,9 @@ import { onAction } from 'nanostores'
 import { useStore } from '@nanostores/react'
 import { petStore } from '@component/app/pet-store'
 
-import AnimatedBreathing from '@component/app/components/animated-breathing'
+import AnimatedBreathing from '@component/app/components/animations/animated-breathing'
+
+import styles from '@component/app/(game-scope)/game/game.module.scss'
 
 export default function Pet() {
   const pet = useStore(petStore.store)
@@ -33,7 +35,7 @@ export default function Pet() {
   }, [])
 
   const animatePetJump = () => {
-    gsap.fromTo(petRef.current, { y: -50, duration: 1, ease: 'expo.in' }, { y: 0, duration: 1, ease: 'expo.out' })
+    gsap.fromTo(petRef.current, { y: -70, duration: 2, ease: 'expo.in' }, { y: 0, duration: 1, ease: 'expo.out' })
   }
 
   onAction(petStore.store, ( { actionName } ) => {
@@ -45,10 +47,10 @@ export default function Pet() {
   return (
     <>
       {pet ? (
-        <div className='pet--container'>
-          <h2>{pet.name}</h2>
+        <div className={styles['pet--container']}>
+          <h2 style={{ alignSelf: 'center' }}>{pet.name}</h2>
           <div ref={petRef} style={{ margin: '0', padding: '0' }}>
-            <AnimatedBreathing image={pet.image} alt={pet.alt} width={450} height={300}/>
+            <AnimatedBreathing image={pet.image} alt={pet.alt} width={350} height={250}/>
           </div>
         </div>
       ) : (

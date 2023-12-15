@@ -1,0 +1,30 @@
+.game--container {
+  display: flex;
+  flex-direction: row;
+}
+
+.conditions-list--container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.interactions--container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pet--container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 20px;
+}
+
+.places--container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 20px;
+}

@@ -10,8 +10,8 @@ import { Pet } from '@component/app/types/pet'
 import { petStore } from '@component/app/pet-store'
 
 import styles from './styles/home.module.scss'
-import AnimatedHeartBeating from '@component/app/components/animated-heart-beating'
-import AnimatedSwap from '@component/app/components/animated-swap'
+import AnimatedHeartBeating from '@component/app/components/animations/animated-heart-beating'
+import AnimatedSwap from '@component/app/components/animations/animated-swap'
 
 const createPet = ( selectedSlide: Slide, petName: string ) => {
   const pet: Pet = {
@@ -55,7 +55,7 @@ export default function CreatePet() {
           placeholder='Enter your pet name'
           value={petName}
           onChange={( e ) => setPetName(e.target.value)}
-          maxLength={50}
+          maxLength={24}
         />
       </div>
 
@@ -95,3 +95,6 @@ export default function CreatePet() {
     </form>
   )
 }
+
+//when I wrote this code, only God & I understood what it did.
+//Now... only God knows.

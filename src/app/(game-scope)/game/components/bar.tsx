@@ -9,9 +9,9 @@ interface BarProps {
 
 export default function Bar( { title, percent }: BarProps ) {
   return (
-    <div className='bar--container'>
-      <h3>{title}</h3>
-      <ProgressBar percent={percent} variant='yellow' size='xl'/>
+    <div style={{ maxWidth: '300px' }}>
+      <h4>{title}</h4>
+      <ProgressBar percent={percent} variant='yellow' size='large'/>
     </div>
   )
 }
