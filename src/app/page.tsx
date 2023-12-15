@@ -9,9 +9,10 @@ import { Slide, slides } from '@component/app/shared-data/slides'
 import { Pet } from '@component/app/types/pet'
 import { petStore } from '@component/app/pet-store'
 
-import styles from './styles/home.module.scss'
 import AnimatedHeartBeating from '@component/app/components/animations/animated-heart-beating'
 import AnimatedSwap from '@component/app/components/animations/animated-swap'
+
+import styles from './styles/home.module.scss'
 
 const createPet = ( selectedSlide: Slide, petName: string ) => {
   const pet: Pet = {

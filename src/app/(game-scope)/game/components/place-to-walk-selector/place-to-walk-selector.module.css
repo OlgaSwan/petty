@@ -16,5 +16,17 @@
     transform: translateX(0);
   }
 }
+.walk--btn {
+  background-color: transparent;
+  border: none;
+}
+
+.walk--image {
+  transition: 0.8ms ease-in;
+}
+.walk--image:active {
+  position: relative;
+  top: 2px;
+}
 
 /*# sourceMappingURL=place-to-walk-selector.module.css.map */

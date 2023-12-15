@@ -35,7 +35,7 @@ export default function Pet() {
   }, [])
 
   const animatePetJump = () => {
-    gsap.fromTo(petRef.current, { y: -70, duration: 2, ease: 'expo.in' }, { y: 0, duration: 1, ease: 'expo.out' })
+    gsap.fromTo(petRef.current, { y: -100, duration: 2, ease: 'expo.in' }, { y: 0, duration: 1, ease: 'expo.out' })
   }
 
   onAction(petStore.store, ( { actionName } ) => {

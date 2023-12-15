@@ -1,8 +1,10 @@
+import React, { useState } from 'react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+
 import Carousel from '@component/app/components/carousel/carousel'
 import { walkBackgroundList } from '@component/app/shared-data/walkBackgrounds'
-import Image from 'next/image'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+
 import styles from './place-to-walk-selector.module.scss'
 
 export default function PlaceToWalkSelector() {
@@ -32,8 +34,8 @@ export default function PlaceToWalkSelector() {
           />
         )}
       </Carousel>
-      <button onClick={() => router.push(`/walk?place=${place}`)}>
-        Go for a walk
+      <button className={styles['walk--btn']} onClick={() => router.push(`/walk?place=${place}`)}>
+        <Image className={styles['walk--image']} src={'/buttons/walk-btn.svg'} alt='Play' width={88} height={36}/>
       </button>
     </div>
   )

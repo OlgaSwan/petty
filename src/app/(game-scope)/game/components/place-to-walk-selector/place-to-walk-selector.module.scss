@@ -1,19 +1,33 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 
-    animation: slideFromRight 1s ease-out forwards;
-    /* Start position */
-    transform: translateX(100%);
+  animation: slideFromRight 1s ease-out forwards;
+  /* Start position */
+  transform: translateX(100%);
 }
 
 @keyframes slideFromRight {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
+  from {
+    transform: translateX(100%);
   }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.walk--btn {
+  background-color: transparent;
+  border: none;
+}
+
+.walk--image {
+  transition: 0.8ms ease-in;
+
+  &:active {
+    position: relative;
+    top: 2px;
+  }
+}

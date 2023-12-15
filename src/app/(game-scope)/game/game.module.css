@@ -3,6 +3,12 @@
   flex-direction: row;
 }
 
+.conditions-interactions--container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .conditions-list--container {
   display: flex;
   flex-direction: column;
@@ -12,19 +18,21 @@
 .interactions--container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .pet--container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .places--container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-content: center;
   gap: 20px;
 }

@@ -23,26 +23,28 @@ export default function Game() {
     <>
       <div className={styles['game--container']}>
         {pet && (
-          <div className={styles['interactions--container']}>
+          <div className={styles['conditions-interactions--container']}>
             <ConditionsList/>
-            <InteractionsList
-              key='meals-list'
-              title='Meals'
-              array={mealList.filter(( e ) => e.diet === pet.diet)}
-              onClick={petStore.eat}
-            />
-            <InteractionsList
-              key='beverages-list'
-              title='Beverages'
-              array={beverageList}
-              onClick={petStore.drink}
-            />
-            <InteractionsList
-              key='toys-list'
-              title='Toys'
-              array={toyList}
-              onClick={petStore.play}
-            />
+            <div className={styles['interactions--container']}>
+              <InteractionsList
+                key='meals-list'
+                title='Meals'
+                array={mealList.filter(( e ) => e.diet === pet.diet)}
+                onClick={petStore.eat}
+              />
+              <InteractionsList
+                key='beverages-list'
+                title='Beverages'
+                array={beverageList}
+                onClick={petStore.drink}
+              />
+              <InteractionsList
+                key='toys-list'
+                title='Toys'
+                array={toyList}
+                onClick={petStore.play}
+              />
+            </div>
           </div>
         )}
         <Pet/>
