@@ -32,13 +32,6 @@ export const mealList: Meal[] = [
   },
   {
     diet: 'Herbivore',
-    image: '/meals/watermelon.svg',
-    alt: 'watermelon',
-    value: 50,
-    price: 30,
-  },
-  {
-    diet: 'Herbivore',
     image: '/meals/carrot.svg',
     alt: 'carrot',
     value: 20,
@@ -50,5 +43,12 @@ export const mealList: Meal[] = [
     alt: 'apple',
     value: 30,
     price: 20,
+  },
+  {
+    diet: 'Herbivore',
+    image: '/meals/watermelon.svg',
+    alt: 'watermelon',
+    value: 50,
+    price: 30,
   },
 ]

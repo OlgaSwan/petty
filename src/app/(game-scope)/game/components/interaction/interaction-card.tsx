@@ -22,9 +22,10 @@ export default function InteractionCard( {
 }: InteractionCardProps ) {
 
   return (
-    <div
+    <button
       className={styles['interaction']}
       onClick={() => onClick(value, price)}
+      disabled={disabled}
     >
       <div className={styles['interaction--meta']}>
         <h5>{alt}</h5>
@@ -33,11 +34,11 @@ export default function InteractionCard( {
         ) : (
           <div className={styles['interaction--price']}>
             <Image src={'/game-asset/coin.svg'} alt='Coin' width={20} height={20}/>
-            <p style={{ color: disabled ? 'red' : 'black' }}>{price}</p>
+            <p>{price}</p>
           </div>
         )}
       </div>
       <Image src={image} alt={alt} width={36} height={36}/>
-    </div>
+    </button>
   )
 }

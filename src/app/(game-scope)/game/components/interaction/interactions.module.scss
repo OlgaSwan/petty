@@ -23,18 +23,27 @@
   gap: 6px;
   padding: 6px;
   background-color: floralwhite;
+  border: none;
   border-radius: 10px;
   width: 86px;
   height: 86px;
   cursor: pointer;
+  font-family: inherit;
 
   &:hover {
     outline: 2px dashed black;
   }
 
-  &:active {
-    position: relative;
-    top: 2px;
+  &:disabled {
+    outline: none;
+    cursor: no-drop;
+  }
+
+  &:not(:disabled) {
+    &:active {
+      position: relative;
+      top: 2px;
+    }
   }
 }
 

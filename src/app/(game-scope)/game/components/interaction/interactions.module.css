@@ -23,15 +23,21 @@
   gap: 6px;
   padding: 6px;
   background-color: floralwhite;
+  border: none;
   border-radius: 10px;
   width: 86px;
   height: 86px;
   cursor: pointer;
+  font-family: inherit;
 }
 .interaction:hover {
   outline: 2px dashed black;
 }
-.interaction:active {
+.interaction:disabled {
+  outline: none;
+  cursor: no-drop;
+}
+.interaction:not(:disabled):active {
   position: relative;
   top: 2px;
 }
