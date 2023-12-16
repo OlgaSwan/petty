@@ -31,18 +31,21 @@ export default function Game() {
                 title='Meals'
                 array={mealList.filter(( e ) => e.diet === pet.diet)}
                 onClick={petStore.eat}
+                balance={pet.balance}
               />
               <InteractionsList
                 key='beverages-list'
                 title='Beverages'
                 array={beverageList}
                 onClick={petStore.drink}
+                balance={pet.balance}
               />
               <InteractionsList
                 key='toys-list'
                 title='Toys'
                 array={toyList}
                 onClick={petStore.play}
+                balance={pet.balance}
               />
             </div>
           </div>

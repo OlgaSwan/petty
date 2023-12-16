@@ -9,6 +9,7 @@ interface InteractionCardProps {
   value: number
   price: number
   onClick: ( value: number, price: number ) => void
+  disabled?: boolean
 }
 
 export default function InteractionCard( {
@@ -17,7 +18,9 @@ export default function InteractionCard( {
   value,
   price,
   onClick,
+  disabled = false,
 }: InteractionCardProps ) {
+
   return (
     <div
       className={styles['interaction']}
@@ -30,7 +33,7 @@ export default function InteractionCard( {
         ) : (
           <div className={styles['interaction--price']}>
             <Image src={'/game-asset/coin.svg'} alt='Coin' width={20} height={20}/>
-            <p>{price}</p>
+            <p style={{ color: disabled ? 'red' : 'black' }}>{price}</p>
           </div>
         )}
       </div>

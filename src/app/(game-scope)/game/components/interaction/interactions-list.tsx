@@ -9,9 +9,10 @@ interface InteractionsListProps {
   title: string
   array: readonly { image: string, alt: string, value: number, price: number, diet?: Diet }[]
   onClick: ( value: number, price: number ) => void
+  balance: number
 }
 
-export default function InteractionsList( { title, array, onClick }: InteractionsListProps ) {
+export default function InteractionsList( { title, array, onClick, balance }: InteractionsListProps ) {
   return (
     <>
       <div className={styles['interactions--container']}>
@@ -19,7 +20,9 @@ export default function InteractionsList( { title, array, onClick }: Interaction
         <div className={styles['interactions--list']}>
           {array.map(( e, index ) => <InteractionCard key={index} image={e.image} alt={e.alt} value={e.value}
                                                       price={e.price}
-                                                      onClick={( value, price ) => onClick(value, price)}/>)}
+                                                      onClick={( value, price ) => onClick(value, price)}
+                                                      disabled={e.price > balance}
+          />)}
         </div>
       </div>
     </>
