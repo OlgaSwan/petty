@@ -4,7 +4,7 @@ import { useStore } from '@nanostores/react'
 import { notiStore } from './store'
 import { useEffect, useState } from 'react'
 
-const removeAfter = 1000
+const removeAfter = 5000
 
 export default function NotiTemp() {
   const notis = useStore(notiStore.store)
