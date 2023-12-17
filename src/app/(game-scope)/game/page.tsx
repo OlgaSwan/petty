@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
 
 import { petStore } from '@component/app/pet-store'
@@ -20,46 +20,53 @@ import NotiTemp from './components/noti/notiTemp'
 
 export default function Game() {
   const pet = useStore(petStore.store)
+  const target = useRef<HTMLDivElement>(null)
   return (
-    <>
-      <div className={styles['game--container']}>
-        {pet && (
-          <div className={styles['conditions-interactions--container']}>
-            <ConditionsList/>
-            <div className={styles['interactions--container']}>
-              <InteractionsList
-                key='meals-list'
-                title='Meals'
-                array={mealList.filter(( e ) => e.diet === pet.diet)}
-                onClick={petStore.eat}
-                balance={pet.balance}
-              />
-              <InteractionsList
-                key='beverages-list'
-                title='Beverages'
-                array={beverageList}
-                onClick={petStore.drink}
-                balance={pet.balance}
-              />
-              <InteractionsList
-                key='toys-list'
-                title='Toys'
-                array={toyList}
-                onClick={petStore.play}
-                balance={pet.balance}
-              />
-            </div>
+    <div className={styles['game--container']}>
+      {pet && (
+        <div className={styles['conditions-interactions--container']}>
+          <ConditionsList />
+          <div className={styles['interactions--container']}>
+            <InteractionsList
+              key='meals-list'
+              title='Meals'
+              array={mealList.filter((e) => e.diet === pet.diet)}
+              onClick={petStore.eat}
+              balance={pet.balance}
+            />
+            <InteractionsList
+              key='beverages-list'
+              title='Beverages'
+              array={beverageList}
+              onClick={petStore.drink}
+              balance={pet.balance}
+            />
+            <InteractionsList
+              key='toys-list'
+              title='Toys'
+              array={toyList}
+              onClick={petStore.play}
+              balance={pet.balance}
+            />
           </div>
-        )}
-        <Pet/>
-        <NotiTemp />
-        {pet && (
-          <div className={styles['places--container']}>
-            <Image src='/pet-home.svg' alt='Pet home' width={200} height={208} style={{ alignSelf: 'center' }}/>
-            {pet.urine > 50 && <PlaceToWalkSelector/>}
-          </div>
-        )}
+        </div>
+      )}
+      <div ref={target}>
+        <Pet />
       </div>
-    </>
+      <NotiTemp target={target} />
+      {pet && (
+        <div className={styles['places--container']}>
+          <Image
+            src='/pet-home.svg'
+            alt='Pet home'
+            width={200}
+            height={208}
+            style={{ alignSelf: 'center' }}
+          />
+          {pet.urine > 50 && <PlaceToWalkSelector />}
+        </div>
+      )}
+    </div>
   )
 }

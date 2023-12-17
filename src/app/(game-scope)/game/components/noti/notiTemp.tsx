@@ -2,12 +2,34 @@
 
 import { useStore } from '@nanostores/react'
 import { notiStore } from './store'
-import { useEffect } from 'react'
+import { RefObject, useEffect, useState } from 'react'
 
 const removeAfter = 5000
 
-export default function NotiTemp() {
+export default function NotiTemp({
+  target,
+}: {
+  target: RefObject<HTMLDivElement>
+}) {
   const currentNoti = useStore(notiStore.currentNotiStore)
+
+  const [position, setPosition] = useState<{ top: number; left: number }>({
+    top: 0,
+    left: 0,
+  })
+
+  useEffect(() => {
+    if (target?.current) {
+      const rect = target.current.getBoundingClientRect()
+
+      // Calculate position relative to the parent
+      const top = rect.top + rect.height
+      const left = rect.left + rect.width
+
+      // Set the position of the child component
+      setPosition({ top, left })
+    }
+  }, [target])
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -19,5 +41,16 @@ export default function NotiTemp() {
 
   if (!currentNoti) return null
 
-  return currentNoti.element
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        backgroundColor: 'lightblue',
+        top: `${position.top}px`,
+        left: `${position.left}px`,
+      }}
+    >
+      {currentNoti.element}
+    </div>
+  )
 }
