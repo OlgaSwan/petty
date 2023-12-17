@@ -1,6 +1,6 @@
 'use client'
 
-import { atom, action } from 'nanostores'
+import { atom, action, onMount } from 'nanostores'
 import { Pet } from '@component/app/types/pet'
 import { notiStore } from './(game-scope)/game/components/noti/store'
 
@@ -8,6 +8,11 @@ export const KEY = 'pet'
 export type Field = 'happiness' | 'fullness' | 'thirst'
 
 const store = atom<Pet | undefined>(undefined)
+
+onMount(store, () => {
+  const localPet = localStorage.getItem(KEY)
+  if (localPet) store.set(JSON.parse(localPet) as Pet)
+})
 
 store.listen((value) =>
   !value

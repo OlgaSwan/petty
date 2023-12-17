@@ -17,10 +17,6 @@ export default forwardRef<HTMLDivElement>((props, ref) => {
   const petRef = useRef(null)
 
   useEffect(() => {
-    petStore.tryGetFromLocalStorage()
-  }, [])
-
-  useEffect(() => {
     let id: NodeJS.Timeout
     const reduceNeeds = () => {
       id = setTimeout(() => {

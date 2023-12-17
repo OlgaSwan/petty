@@ -19,6 +19,7 @@ export default function NotiTemp({
   })
 
   useEffect(() => {
+    console.log(target.current)
     if (target.current) {
       const rect = target.current.getBoundingClientRect()
 
