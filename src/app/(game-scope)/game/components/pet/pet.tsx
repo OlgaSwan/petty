@@ -35,11 +35,19 @@ export default function Pet() {
   }, [])
 
   const animatePetJump = () => {
-    gsap.fromTo(petRef.current, { y: -100, duration: 2, ease: 'expo.in' }, { y: 0, duration: 1, ease: 'expo.out' })
+    gsap.fromTo(
+      petRef.current,
+      { y: -100, duration: 2, ease: 'expo.in' },
+      { y: 0, duration: 1, ease: 'expo.out' }
+    )
   }
 
-  onAction(petStore.store, ( { actionName } ) => {
-    if (actionName === 'eat' || actionName === 'drink' || actionName === 'play') {
+  onAction(petStore.store, ({ actionName }) => {
+    if (
+      actionName === 'eat' ||
+      actionName === 'drink' ||
+      actionName === 'play'
+    ) {
       animatePetJump()
     }
   })
@@ -50,7 +58,12 @@ export default function Pet() {
         <div className={styles['pet--container']}>
           <h2 style={{ alignSelf: 'center' }}>{pet.name}</h2>
           <div ref={petRef} style={{ margin: '0', padding: '0' }}>
-            <AnimatedBreathing image={pet.image} alt={pet.alt} width={350} height={250}/>
+            <AnimatedBreathing
+              image={pet.image}
+              alt={pet.alt}
+              width={350}
+              height={250}
+            />
           </div>
         </div>
       ) : (

@@ -16,6 +16,7 @@ import { beverageList } from '@component/app/shared-data/beverages'
 import { toyList } from '@component/app/shared-data/toys'
 
 import styles from './game.module.scss'
+import NotiTemp from './components/noti/notiTemp'
 
 export default function Game() {
   const pet = useStore(petStore.store)
@@ -51,6 +52,7 @@ export default function Game() {
           </div>
         )}
         <Pet/>
+        <NotiTemp />
         {pet && (
           <div className={styles['places--container']}>
             <Image src='/pet-home.svg' alt='Pet home' width={200} height={208} style={{ alignSelf: 'center' }}/>
