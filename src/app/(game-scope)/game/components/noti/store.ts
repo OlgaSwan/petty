@@ -1,7 +1,7 @@
 'use client'
 
 import { Field } from '@component/app/pet-store'
-import { action, atom } from 'nanostores'
+import { action, atom, computed } from 'nanostores'
 import { ReactNode } from 'react'
 
 type NotiType = 'pee' | 'speak' | Field
@@ -16,8 +16,7 @@ type NotiObj = {
 }
 
 const store = atom<NotiObj[]>([])
-
-store.listen((value) => console.log(value, 'noti'))
+const currentNotiStore = computed(store, (value) => value.at(0))
 
 const timestamps: Partial<TimestampObject> = {}
 const addTimeout = 10000 //milliseconds
@@ -38,6 +37,7 @@ const getNotiElement = (type: NotiType): ReactNode => {
 }
 
 export const notiStore = {
+  currentNotiStore,
   store,
   add: action(store, 'add', (store, type: NotiType) => {
     const notis = store.get()

@@ -2,18 +2,12 @@
 
 import { useStore } from '@nanostores/react'
 import { notiStore } from './store'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 const removeAfter = 5000
 
 export default function NotiTemp() {
-  const notis = useStore(notiStore.store)
-
-  const [currentNoti, setCurrentNoti] = useState(notis.at(0))
-
-  useEffect(() => {
-    setCurrentNoti(notis.at(0))
-  }, [notis])
+  const currentNoti = useStore(notiStore.currentNotiStore)
 
   useEffect(() => {
     const id = setTimeout(() => {
