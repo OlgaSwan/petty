@@ -20,7 +20,7 @@ const store = atom<NotiObj[]>([])
 store.listen((value) => console.log(value, 'noti'))
 
 const timestamps: Partial<TimestampObject> = {}
-const addTimeout = 100000 //milliseconds
+const addTimeout = 10000 //milliseconds
 
 const getNotiElement = (type: NotiType): ReactNode => {
   switch (type) {
@@ -45,8 +45,8 @@ export const notiStore = {
     if (notis.find((item) => item.type === type)) return
 
     const timestamp = new Date().getTime()
-    console.log((timestamps[type] ?? 0 + addTimeout) > timestamp)
-    if ((timestamps[type] ?? 0 + addTimeout) > timestamp) return
+    const prevTimestamp = timestamps[type] ?? 0
+    if (timestamp - prevTimestamp < addTimeout) return
 
     const element = getNotiElement(type)
     timestamps[type] = timestamp

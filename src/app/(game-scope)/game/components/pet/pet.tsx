@@ -28,7 +28,7 @@ export default function Pet() {
         petStore.reduceNeeds('fullness')
         petStore.reduceNeeds('thirst')
         reduceNeeds()
-      }, 10000)
+      }, 1000)
     }
     reduceNeeds()
     return () => clearTimeout(id)
