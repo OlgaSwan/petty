@@ -19,7 +19,7 @@ const store = atom<NotiObj[]>([])
 const currentNotiStore = computed(store, (value) => value.at(0))
 
 const timestamps: Partial<TimestampObject> = {}
-const addTimeout = 10000 //milliseconds
+const addTimeout = 20000 //milliseconds
 
 const getNotiElement = (type: NotiType): ReactNode => {
   switch (type) {
