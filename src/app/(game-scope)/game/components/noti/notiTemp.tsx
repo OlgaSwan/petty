@@ -19,7 +19,7 @@ export default function NotiTemp({
   })
 
   useEffect(() => {
-    if (target?.current) {
+    if (target.current) {
       const rect = target.current.getBoundingClientRect()
 
       // Calculate position relative to the parent

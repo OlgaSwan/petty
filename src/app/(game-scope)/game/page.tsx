@@ -51,9 +51,7 @@ export default function Game() {
           </div>
         </div>
       )}
-      <div ref={target}>
-        <Pet />
-      </div>
+      <Pet ref={target} />
       <NotiTemp target={target} />
       {pet && (
         <div className={styles['places--container']}>

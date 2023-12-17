@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { forwardRef, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 
@@ -12,7 +12,7 @@ import AnimatedBreathing from '@component/app/components/animations/animated-bre
 
 import styles from '@component/app/(game-scope)/game/game.module.scss'
 
-export default function Pet() {
+export default forwardRef<HTMLDivElement>((props, ref) => {
   const pet = useStore(petStore.store)
   const petRef = useRef(null)
 
@@ -53,9 +53,10 @@ export default function Pet() {
   })
 
   return (
-    <>
+    <div className={styles['pet--container']} ref={ref}>
       {pet ? (
-        <div className={styles['pet--container']}>
+        <>
+          {' '}
           <h2 style={{ alignSelf: 'center' }}>{pet.name}</h2>
           <div ref={petRef} style={{ margin: '0', padding: '0' }}>
             <AnimatedBreathing
@@ -65,13 +66,14 @@ export default function Pet() {
               height={250}
             />
           </div>
-        </div>
+        </>
       ) : (
-        <div>
+        <>
+          {' '}
           <p>Sry but u don`t have a pet :(</p>
           <Link href='/'>Click here to create one</Link>
-        </div>
+        </>
       )}
-    </>
+    </div>
   )
-}
+})
