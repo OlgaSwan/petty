@@ -13,22 +13,19 @@ export default function NotiTemp({
 }) {
   const currentNoti = useStore(notiStore.currentNotiStore)
 
-  const [position, setPosition] = useState<{ top: number; left: number }>({
+  const [position, setPosition] = useState<{ top: number; right: number }>({
     top: 0,
-    left: 0,
+    right: 0,
   })
 
   useEffect(() => {
-    console.log(target.current)
     if (target.current) {
       const rect = target.current.getBoundingClientRect()
 
-      // Calculate position relative to the parent
-      const top = rect.top + rect.height
-      const left = rect.left + rect.width
-
-      // Set the position of the child component
-      setPosition({ top, left })
+      const top = rect.top
+      const right = rect.right
+      console.log(top, right)
+      setPosition({ top, right })
     }
   }, [target])
 
@@ -46,9 +43,9 @@ export default function NotiTemp({
     <div
       style={{
         position: 'absolute',
-        backgroundColor: 'lightblue',
-        top: `${position.top}px`,
-        left: `${position.left}px`,
+        backgroundColor: 'red',
+        bottom: `${position.top}px`,
+        left: `${position.right}px`,
       }}
     >
       {currentNoti.element}
