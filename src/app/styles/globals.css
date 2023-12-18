@@ -82,7 +82,7 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 4rem;
   min-height: 100vh;
@@ -100,6 +100,14 @@ input {
 footer {
   display: flex;
   justify-content: center;
+}
+
+.not--found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
 /*# sourceMappingURL=globals.css.map */
