@@ -1,38 +1,54 @@
 'use client'
 
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-
-import { Field, petStore } from '@component/app/pet-store'
+import { RefObject, useEffect, useState } from 'react'
 import { useStore } from '@nanostores/react'
 
-export default function Noti() {
-  const pet = useStore(petStore.store)
-  const [visible, setVisible] = useState(false)
-  const [need, setNeed] = useState<Field | null>(null)
+import { notiStore } from './store'
 
-  const isCalled = useRef(false)
+const removeAfter = 5000
 
-  const handleNeed = useCallback(
-    ( field: Field ) => {
-      if (isCalled.current) return
-      if (pet && pet[field] <= 20) {
-        isCalled.current = true
-        setNeed(field)
-        setVisible(true)
-        setTimeout(() => setVisible(false), 5000)
-      }
-    }, [pet])
+export default function Noti( {
+  target,
+}: {
+  target: RefObject<HTMLDivElement>
+} ) {
+  const currentNoti = useStore(notiStore.currentNotiStore)
+  const [position, setPosition] = useState<{ top: number; left: number }>({
+    top: 0,
+    left: 0,
+  })
 
   useEffect(() => {
-    handleNeed('fullness')
-    handleNeed('thirst')
-    handleNeed('happiness')
-  }, [handleNeed])
+    if (target.current) {
+      const targetRect = target.current.getBoundingClientRect()
+
+      const top = targetRect.top - 130
+      const left = targetRect.left + ( targetRect.width * 2 ) / 3
+
+      console.log(top, left)
+      setPosition({ top, left })
+    }
+  }, [target])
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      notiStore.removeFirst()
+    }, removeAfter)
+
+    return () => clearTimeout(id)
+  }, [currentNoti])
+
+  if (!currentNoti) return null
 
   return (
-    <>
-      {visible && need && <div>Noti</div>}
-    </>
+    <div
+      style={{
+        position: 'absolute',
+        top: `${position.top}px`,
+        left: `${position.left}px`,
+      }}
+    >
+      {currentNoti.element}
+    </div>
   )
 }
-

@@ -9,7 +9,7 @@ import { petStore } from '@component/app/pet-store'
 import AnimatedBreathing from '@component/app/components/animations/animated-breathing'
 
 import styles from '@component/app/(game-scope)/game/game.module.scss'
-import NotiTemp from '../noti/notiTemp'
+import Noti from '../noti/noti'
 import { Pet } from '@component/app/types/pet'
 
 type PetProps = {
@@ -49,7 +49,7 @@ export default function Pet( { pet }: PetProps ) {
 
   return (
     <>
-      <NotiTemp target={petRef}/>
+      <Noti target={petRef}/>
       <div className={styles['pet--container']}>
         <h2 style={{ alignSelf: 'center' }}>{pet.name}</h2>
         <div ref={petRef} style={{ margin: '0', padding: '0' }}>
