@@ -18,12 +18,12 @@ type NotiObj = {
 }
 
 const store = atom<NotiObj[]>([])
-const currentNotiStore = computed(store, ( value ) => value.at(0))
+const currentNotiStore = computed(store, (value) => value.at(0))
 
 const timestamps: Partial<TimestampObject> = {}
 const addTimeout = 20000 //milliseconds
 
-const getNotiElement = ( type: NotiType ): ReactNode => {
+const getNotiElement = (type: NotiType): ReactNode => {
   let src = ''
 
   switch (type) {
@@ -49,15 +49,15 @@ const getNotiElement = ( type: NotiType ): ReactNode => {
     }
   }
 
-  return <Image src={src} alt='Notification' width={89} height={50}/>
+  return <Image src={src} alt='Notification' width={178} height={100} />
 }
 
 export const notiStore = {
   currentNotiStore,
   store,
-  add: action(store, 'add', ( store, type: NotiType ) => {
+  add: action(store, 'add', (store, type: NotiType) => {
     const notis = store.get()
-    if (notis.find(( item ) => item.type === type)) return
+    if (notis.find((item) => item.type === type)) return
 
     const timestamp = new Date().getTime()
     const prevTimestamp = timestamps[type] ?? 0
@@ -68,16 +68,16 @@ export const notiStore = {
 
     store.set([...notis, { type: type, element: element }])
   }),
-  remove: action(store, 'remove', ( store, type: NotiType ) => {
+  remove: action(store, 'remove', (store, type: NotiType) => {
     const notis = store.get()
 
-    if (notis.find(( item ) => item.type === type)) {
-      const filtered = notis.filter(( item ) => item.type !== type)
+    if (notis.find((item) => item.type === type)) {
+      const filtered = notis.filter((item) => item.type !== type)
 
       store.set([...filtered])
     }
   }),
-  removeFirst: action(store, 'removeFirst', ( store ) => {
+  removeFirst: action(store, 'removeFirst', (store) => {
     store.set(store.get().slice(1))
   }),
 }
