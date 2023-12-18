@@ -6,11 +6,11 @@ import { RefObject, useEffect, useState } from 'react'
 
 const removeAfter = 5000
 
-export default function NotiTemp({
+export default function NotiTemp( {
   target,
 }: {
   target: RefObject<HTMLDivElement>
-}) {
+} ) {
   const currentNoti = useStore(notiStore.currentNotiStore)
   const [position, setPosition] = useState<{ top: number; left: number }>({
     top: 0,
@@ -22,7 +22,7 @@ export default function NotiTemp({
       const targetRect = target.current.getBoundingClientRect()
 
       const top = targetRect.top - 100
-      const left = targetRect.left + (targetRect.width * 2) / 3
+      const left = targetRect.left + ( targetRect.width * 2 ) / 3
 
       console.log(top, left)
       setPosition({ top, left })
