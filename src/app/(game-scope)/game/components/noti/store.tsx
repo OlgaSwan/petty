@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { Field } from '@component/app/pet-store'
 import { action, atom, computed } from 'nanostores'
 
-type NotiType = 'pee' | 'speak' | Field
+type NotiType = 'yummy' | 'pee' | 'speak' | Field
 
 type TimestampObject = {
   [key in NotiType]: number

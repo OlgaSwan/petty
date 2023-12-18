@@ -25,7 +25,6 @@ export default function Noti( {
       const top = targetRect.top - 130
       const left = targetRect.left + ( targetRect.width * 2 ) / 3
 
-      console.log(top, left)
       setPosition({ top, left })
     }
   }, [target])

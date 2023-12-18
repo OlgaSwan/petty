@@ -56,6 +56,8 @@ export const petStore = {
         balance: pet.balance - price,
       }
       store.set(newValue)
+
+      notiStore.add('yummy')
       notiStore.remove('fullness')
     }
   }),
@@ -69,6 +71,8 @@ export const petStore = {
         balance: pet.balance - price,
       }
       store.set(newValue)
+
+      notiStore.add('yummy')
       notiStore.remove('thirst')
 
       if (newValue.urine > 50) notiStore.add('pee')

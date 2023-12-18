@@ -11,6 +11,7 @@ import AnimatedBreathing from '@component/app/components/animations/animated-bre
 import styles from '@component/app/(game-scope)/game/game.module.scss'
 import Noti from '../noti/noti'
 import { Pet } from '@component/app/types/pet'
+import { notiStore } from '../noti/store'
 
 type PetProps = {
   pet: Pet
@@ -30,6 +31,19 @@ export default function Pet( { pet }: PetProps ) {
       }, 10000)
     }
     reduceNeeds()
+    return () => clearTimeout(id)
+  }, [])
+
+  useEffect(() => {
+    function sayLoveYou() {
+      id = setTimeout(() => {
+        notiStore.add('speak')
+      }, 1000)
+    }
+
+    let id : NodeJS.Timeout
+    sayLoveYou()
+
     return () => clearTimeout(id)
   }, [])
 
