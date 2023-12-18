@@ -6,11 +6,11 @@ import { RefObject, useEffect, useState } from 'react'
 
 const removeAfter = 5000
 
-export default function NotiTemp({
+export default function NotiTemp( {
   target,
 }: {
   target: RefObject<HTMLDivElement>
-}) {
+} ) {
   const currentNoti = useStore(notiStore.currentNotiStore)
 
   const [position, setPosition] = useState<{ top: number; right: number }>({
@@ -43,7 +43,6 @@ export default function NotiTemp({
     <div
       style={{
         position: 'absolute',
-        backgroundColor: 'red',
         bottom: `${position.top}px`,
         left: `${position.right}px`,
       }}

@@ -16,7 +16,7 @@ type PetProps = {
   pet: Pet
 }
 
-export default function Pet({ pet }: PetProps) {
+export default function Pet( { pet }: PetProps ) {
   const petRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -37,23 +37,19 @@ export default function Pet({ pet }: PetProps) {
     gsap.fromTo(
       petRef.current,
       { y: -100, duration: 2, ease: 'expo.in' },
-      { y: 0, duration: 1, ease: 'expo.out' }
+      { y: 0, duration: 1, ease: 'expo.out' },
     )
   }
 
-  onAction(petStore.store, ({ actionName }) => {
-    if (
-      actionName === 'eat' ||
-      actionName === 'drink' ||
-      actionName === 'play'
-    ) {
+  onAction(petStore.store, ( { actionName } ) => {
+    if (actionName === 'eat' || actionName === 'drink' || actionName === 'play') {
       animatePetJump()
     }
   })
 
   return (
     <>
-      <NotiTemp target={petRef} />
+      <NotiTemp target={petRef}/>
       <div className={styles['pet--container']}>
         <h2 style={{ alignSelf: 'center' }}>{pet.name}</h2>
         <div ref={petRef} style={{ margin: '0', padding: '0' }}>

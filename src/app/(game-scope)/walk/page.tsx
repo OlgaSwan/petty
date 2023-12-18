@@ -37,6 +37,8 @@ function Walk() {
     }
   }, [router, pet?.urine])
 
+  if (!pet) return null
+
   return (
     <div
       style={{
@@ -48,7 +50,7 @@ function Walk() {
       }}
     >
       {pet && <Bar title='Spreading urine' percent={pet.urine}/>}
-      <Pet/>
+      <Pet pet={pet}/>
     </div>
   )
 }
