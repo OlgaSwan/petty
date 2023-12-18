@@ -2,7 +2,7 @@
 
 import { useStore } from '@nanostores/react'
 import { notiStore } from './store'
-import { RefObject, useEffect, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
 
 const removeAfter = 5000
 
@@ -12,20 +12,22 @@ export default function NotiTemp( {
   target: RefObject<HTMLDivElement>
 } ) {
   const currentNoti = useStore(notiStore.currentNotiStore)
-
-  const [position, setPosition] = useState<{ top: number; right: number }>({
+  const currentNotiRef = useRef<HTMLDivElement>(null)
+  const [position, setPosition] = useState<{ top: number; left: number }>({
     top: 0,
-    right: 0,
+    left: 0,
   })
 
   useEffect(() => {
-    if (target.current) {
-      const rect = target.current.getBoundingClientRect()
+    if (target.current && currentNotiRef.current) {
+      const targetRect = target.current.getBoundingClientRect()
+      const notiRect = currentNotiRef.current.getBoundingClientRect()
 
-      const top = rect.top
-      const right = rect.right
-      console.log(top, right)
-      setPosition({ top, right })
+      const top = targetRect.top - notiRect.height
+      const left = targetRect.left + (targetRect.width * 2) / 3
+
+      console.log(top, left)
+      setPosition({ top, left })
     }
   }, [target])
 
@@ -41,10 +43,11 @@ export default function NotiTemp( {
 
   return (
     <div
+      ref={currentNotiRef}
       style={{
         position: 'absolute',
-        bottom: `${position.top}px`,
-        left: `${position.right}px`,
+        top: `${position.top}px`,
+        left: `${position.left}px`,
       }}
     >
       {currentNoti.element}
