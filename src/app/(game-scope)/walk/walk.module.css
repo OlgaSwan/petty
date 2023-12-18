@@ -1,0 +1,13 @@
+.walk--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 300px;
+  width: 960px;
+  height: 800px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*# sourceMappingURL=walk.module.css.map */

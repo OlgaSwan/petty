@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { Field } from '@component/app/pet-store'
 import { action, atom, computed } from 'nanostores'
 
-type NotiType = 'yummy' | 'pee' | 'speak' | Field
+type NotiType = 'yummy' | 'pee' | 'speak' | 'play' | Field
 
 type TimestampObject = {
   [key in NotiType]: number
@@ -18,21 +18,31 @@ type NotiObj = {
 }
 
 const store = atom<NotiObj[]>([])
-const currentNotiStore = computed(store, (value) => value.at(0))
+const currentNotiStore = computed(store, ( value ) => value.at(0))
 
 const timestamps: Partial<TimestampObject> = {}
-const addTimeout = 20000 //milliseconds
+const addTimeout = 10000 //milliseconds
 
-const getNotiElement = (type: NotiType): ReactNode => {
+const getNotiElement = ( type: NotiType ): ReactNode => {
   let src = ''
+  const eatDrinkNotis = ['noti/eat-drink/noti-yum.svg', 'noti/eat-drink/noti-yummy.svg']
+  const playNotis = ['noti/play/noti-heart.svg', 'noti/play/noti-woah.svg']
 
   switch (type) {
+    case 'yummy': {
+      src = eatDrinkNotis[Math.floor(Math.random() * eatDrinkNotis.length)]
+      break
+    }
     case 'pee': {
       src = 'noti/noti-pee.svg'
       break
     }
     case 'speak': {
       src = 'noti/noti-luv.svg'
+      break
+    }
+    case 'play': {
+      src = playNotis[Math.floor(Math.random() * playNotis.length)]
       break
     }
     case 'happiness': {
@@ -49,15 +59,15 @@ const getNotiElement = (type: NotiType): ReactNode => {
     }
   }
 
-  return <Image src={src} alt='Notification' width={178} height={100} />
+  return <Image src={src} alt='Notification' width={178} height={100}/>
 }
 
 export const notiStore = {
   currentNotiStore,
   store,
-  add: action(store, 'add', (store, type: NotiType) => {
+  add: action(store, 'add', ( store, type: NotiType ) => {
     const notis = store.get()
-    if (notis.find((item) => item.type === type)) return
+    if (notis.find(( item ) => item.type === type)) return
 
     const timestamp = new Date().getTime()
     const prevTimestamp = timestamps[type] ?? 0
@@ -68,16 +78,16 @@ export const notiStore = {
 
     store.set([...notis, { type: type, element: element }])
   }),
-  remove: action(store, 'remove', (store, type: NotiType) => {
+  remove: action(store, 'remove', ( store, type: NotiType ) => {
     const notis = store.get()
 
-    if (notis.find((item) => item.type === type)) {
-      const filtered = notis.filter((item) => item.type !== type)
+    if (notis.find(( item ) => item.type === type)) {
+      const filtered = notis.filter(( item ) => item.type !== type)
 
       store.set([...filtered])
     }
   }),
-  removeFirst: action(store, 'removeFirst', (store) => {
+  removeFirst: action(store, 'removeFirst', ( store ) => {
     store.set(store.get().slice(1))
   }),
 }

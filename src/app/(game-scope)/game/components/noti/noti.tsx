@@ -22,7 +22,7 @@ export default function Noti( {
     if (target.current) {
       const targetRect = target.current.getBoundingClientRect()
 
-      const top = targetRect.top - 130
+      const top = targetRect.top - 100
       const left = targetRect.left + ( targetRect.width * 2 ) / 3
 
       setPosition({ top, left })

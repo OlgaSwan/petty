@@ -8,6 +8,8 @@ import { petStore } from '@component/app/pet-store'
 import Bar from '../game/components/bar'
 import Pet from '../game/components/pet/pet'
 
+import styles from './walk.module.scss'
+
 function Walk() {
   const pet = useStore(petStore.store)
   const router = useRouter()
@@ -40,16 +42,10 @@ function Walk() {
   if (!pet) return null
 
   return (
-    <div
-      style={{
-        width: '960px',
-        height: '800px',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundImage: `url("${place}")`,
-      }}
+    <div className={styles['walk--container']}
+         style={{ backgroundImage: `url('${place}')` }}
     >
-      {pet && <Bar title='Spreading urine' percent={pet.urine}/>}
+      <Bar title='Spreading urine' percent={pet.urine}/>
       <Pet pet={pet}/>
     </div>
   )

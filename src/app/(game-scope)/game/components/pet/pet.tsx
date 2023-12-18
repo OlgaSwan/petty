@@ -38,10 +38,10 @@ export default function Pet( { pet }: PetProps ) {
     function sayLoveYou() {
       id = setTimeout(() => {
         notiStore.add('speak')
-      }, 1000)
+      }, 60000)
     }
 
-    let id : NodeJS.Timeout
+    let id: NodeJS.Timeout
     sayLoveYou()
 
     return () => clearTimeout(id)
