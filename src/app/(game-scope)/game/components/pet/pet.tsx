@@ -1,23 +1,24 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, memo } from 'react'
 import gsap from 'gsap'
 
 import { onAction } from 'nanostores'
 import { petStore } from '@component/app/pet-store'
 
+import Noti from '../noti/noti'
+import { notiStore } from '../noti/store'
 import AnimatedBreathing from '@component/app/components/animations/animated-breathing'
 
 import styles from '@component/app/(game-scope)/game/game.module.scss'
-import Noti from '../noti/noti'
-import { Pet } from '@component/app/types/pet'
-import { notiStore } from '../noti/store'
 
 type PetProps = {
-  pet: Pet
+  image: string
+  name: string
+  alt: string
 }
 
-export default function Pet( { pet }: PetProps ) {
+function Pet( { image, name, alt }: PetProps ) {
   const petRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -65,11 +66,11 @@ export default function Pet( { pet }: PetProps ) {
     <>
       <Noti target={petRef}/>
       <div className={styles['pet--container']}>
-        <h2 style={{ alignSelf: 'center' }}>{pet.name}</h2>
+        <h2 style={{ alignSelf: 'center' }}>{name}</h2>
         <div ref={petRef} style={{ margin: '0', padding: '0' }}>
           <AnimatedBreathing
-            image={pet.image}
-            alt={pet.alt}
+            image={image}
+            alt={alt}
             width={350}
             height={250}
           />
@@ -78,3 +79,5 @@ export default function Pet( { pet }: PetProps ) {
     </>
   )
 }
+
+export default memo(Pet)

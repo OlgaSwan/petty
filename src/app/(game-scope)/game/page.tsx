@@ -25,12 +25,12 @@ export default function Game() {
   return (
     <div className={styles['game--container']}>
       <div className={styles['conditions-interactions--container']}>
-        <ConditionsList />
+        <ConditionsList/>
         <div className={styles['interactions--container']}>
           <InteractionsList
             key='meals-list'
             title='Meals'
-            array={mealList.filter((e) => e.diet === pet.diet)}
+            array={mealList.filter(( e ) => e.diet === pet.diet)}
             onClick={petStore.eat}
             balance={pet.balance}
           />
@@ -50,7 +50,7 @@ export default function Game() {
           />
         </div>
       </div>
-      <Pet pet={pet} />
+      <Pet image={pet.image} name={pet.name} alt={pet.alt}/>
       <div className={styles['places--container']}>
         <Image
           src='/pet-home.svg'
@@ -59,7 +59,7 @@ export default function Game() {
           height={208}
           style={{ alignSelf: 'center' }}
         />
-        {pet.urine > 50 && <PlaceToWalkSelector />}
+        {pet.urine > 50 && <PlaceToWalkSelector/>}
       </div>
     </div>
   )

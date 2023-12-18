@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Image from 'next/image'
 
 import styles from './/interactions.module.scss'
@@ -12,7 +12,7 @@ interface InteractionCardProps {
   disabled?: boolean
 }
 
-export default function InteractionCard( {
+function InteractionCard( {
   image,
   alt,
   value,
@@ -42,3 +42,5 @@ export default function InteractionCard( {
     </button>
   )
 }
+
+export default memo(InteractionCard)

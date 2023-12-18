@@ -46,7 +46,7 @@ function Walk() {
          style={{ backgroundImage: `url('${place}')` }}
     >
       <Bar title='Spreading urine' percent={pet.urine}/>
-      <Pet pet={pet}/>
+      <Pet image={pet.image} name={pet.name} alt={pet.alt}/>
     </div>
   )
 }
