@@ -43,6 +43,12 @@ header {
   position: sticky;
   top: 0;
 }
+header.header--colored {
+  padding: 20px 38px;
+  background-color: #f4bda3;
+  border-left: 2px solid #4565e8;
+  border-right: 2px solid #4565e8;
+}
 
 .logo--container {
   display: flex;

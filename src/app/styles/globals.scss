@@ -48,6 +48,13 @@ header {
   font-size: 20px;
   position: sticky;
   top: 0;
+
+  &.header--colored {
+    padding: 20px 38px;
+    background-color: $background-body-color;
+    border-left: 2px solid $border-color;
+    border-right: 2px solid $border-color;
+  }
 }
 
 .logo--container {

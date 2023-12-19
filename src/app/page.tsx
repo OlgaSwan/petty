@@ -32,9 +32,9 @@ const createPet = ( selectedSlide: Slide, petName: string ) => {
 export default function CreatePet() {
   const router = useRouter()
   const formRef = useRef<HTMLFormElement>(null)
+  const [showHeart, setShowHeart] = useState(true)
   const [selectedSlide, setSelectedSlide] = useState(slides[0])
   const [petName, setPetName] = useState('')
-  const [showHeart, setShowHeart] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {

@@ -34,6 +34,7 @@ export default function AnimatedSwap( { images, alt, style, width = 70, height =
 
     const intervalID = setInterval(changeImage, 2000)
     return () => clearInterval(intervalID)
+
   }, [images])
 
   return (
