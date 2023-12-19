@@ -4,11 +4,16 @@
   justify-content: center;
   align-items: center;
   max-width: 960px;
+
 }
 
 .heart {
   align-self: start;
   margin-left: 10em;
+
+  &.hide-heart {
+    display: none;
+  }
 }
 
 .naming--container {

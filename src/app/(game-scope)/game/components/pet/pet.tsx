@@ -11,6 +11,7 @@ import { notiStore } from '../noti/store'
 import AnimatedBreathing from '@component/app/components/animations/animated-breathing'
 
 import styles from '@component/app/(game-scope)/game/game.module.scss'
+import { useGSAP } from '@gsap/react'
 
 type PetProps = {
   image: string
@@ -20,6 +21,7 @@ type PetProps = {
 
 function Pet( { image, name, alt }: PetProps ) {
   const petRef = useRef<HTMLDivElement>(null)
+  const { contextSafe } = useGSAP({ scope: petRef })
 
   useEffect(() => {
     let id: NodeJS.Timeout
@@ -48,13 +50,15 @@ function Pet( { image, name, alt }: PetProps ) {
     return () => clearTimeout(id)
   }, [])
 
-  const animatePetJump = () => {
-    gsap.fromTo(
-      petRef.current,
-      { y: -100, duration: 2, ease: 'expo.in' },
-      { y: 0, duration: 1, ease: 'expo.out' },
-    )
-  }
+  const animatePetJump = contextSafe(
+    () => {
+      gsap.fromTo(
+        petRef.current,
+        { y: -100, duration: 2, ease: 'expo.in' },
+        { y: 0, duration: 1, ease: 'expo.out' },
+      )
+    },
+  )
 
   onAction(petStore.store, ( { actionName } ) => {
     if (actionName === 'eat' || actionName === 'drink' || actionName === 'play') {

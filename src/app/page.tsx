@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
@@ -31,11 +31,27 @@ const createPet = ( selectedSlide: Slide, petName: string ) => {
 
 export default function CreatePet() {
   const router = useRouter()
+  const formRef = useRef<HTMLFormElement>(null)
   const [selectedSlide, setSelectedSlide] = useState(slides[0])
   const [petName, setPetName] = useState('')
+  const [showHeart, setShowHeart] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop
+      setShowHeart(scrollPosition < 100)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [showHeart])
 
   return (
-    <form className={styles['pet--form']}
+    <form ref={formRef}
+          className={showHeart ? styles['pet--form'] : `${styles['pet--form']} ${styles['hide--heart']}`}
           onSubmit={( e ) => {
             e.preventDefault()
 
@@ -48,7 +64,7 @@ export default function CreatePet() {
             }
           }}
     >
-      <AnimatedHeartBeating image={'/game-asset/heart.svg'} alt='Heart beating' style='heart'/>
+      {showHeart && <AnimatedHeartBeating image={'/game-asset/heart.svg'} alt='Heart beating' style='heart'/>}
       <div className={styles['naming--container']}>
         <h2>Pet name</h2>
         <input

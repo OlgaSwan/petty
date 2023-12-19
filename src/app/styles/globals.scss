@@ -1,4 +1,7 @@
+$background-html-color: #7395ff;
+$background-body-color: #f4bda3;
 $border-radius: 8px;
+$border-color: #4565e8;
 $input-border: #8b8a8b;
 
 * {
@@ -8,7 +11,7 @@ $input-border: #8b8a8b;
 }
 
 html {
-  background-color: cornflowerblue;
+  background-color: $background-html-color;
 }
 
 body {
@@ -19,7 +22,9 @@ body {
   justify-content: center;
   align-items: center;
   align-self: center;
-  background-color: burlywood;
+  background-color: $background-body-color;
+  border: solid 2px $border-color;
+  border-radius: 50px;
 }
 
 a {
@@ -39,8 +44,10 @@ header {
   flex-direction: row;
   justify-content: space-between;
   padding: 20px 40px;
+  border-bottom: 2px solid $border-color;
   font-size: 20px;
-  border-bottom: 2px dashed black;
+  position: sticky;
+  top: 0;
 }
 
 .logo--container {
@@ -111,6 +118,7 @@ input {
 footer {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .not--found {

@@ -10,6 +10,9 @@
   align-self: start;
   margin-left: 10em;
 }
+.heart.hide-heart {
+  display: none;
+}
 
 .naming--container {
   display: flex;

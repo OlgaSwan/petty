@@ -21,11 +21,10 @@ export default function AnimatedHeartBeating( {
   width = 70,
   height = 70,
 }: AnimatedHeartBeatingProps ) {
-  const heartRef = useRef<HTMLImageElement | null>(null)
+  const heartRef = useRef<HTMLImageElement>(null)
 
   useGSAP(() => {
     const changeImage = () => {
-      if (!heartRef.current) return
       gsap.from(heartRef.current, {
         scale: 1.1,
         duration: 0.8,

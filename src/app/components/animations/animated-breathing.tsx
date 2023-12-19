@@ -21,12 +21,11 @@ export default function AnimatedBreathing( {
   width = 70,
   height = 70,
 }: AnimatedBreathingProps ) {
-  const petRef = useRef<HTMLImageElement | null>(null)
+  const petRef = useRef<HTMLImageElement>(null)
   const { contextSafe } = useGSAP({ scope: petRef })
 
   const startAnimationInterval = () => {
     const animateImage = contextSafe(() => {
-      if (!petRef.current) return
       gsap.from(petRef.current, {
         scale: 1.01,
         duration: 4,
