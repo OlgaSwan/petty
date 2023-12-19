@@ -110,4 +110,11 @@ footer {
   gap: 30px;
 }
 
+.loading--container {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  gap: 4px;
+}
+
 /*# sourceMappingURL=globals.css.map */

@@ -21,30 +21,32 @@ export default function AnimatedBreathing( {
   width = 70,
   height = 70,
 }: AnimatedBreathingProps ) {
-  const heartRef = useRef<HTMLImageElement | null>(null)
+  const petRef = useRef<HTMLImageElement | null>(null)
+  const { contextSafe } = useGSAP({ scope: petRef })
 
-  useGSAP(() => {
-    const changeImage = () => {
-      if (!heartRef.current) return
-      gsap.from(heartRef.current, {
+  const startAnimationInterval = () => {
+    const animateImage = contextSafe(() => {
+      if (!petRef.current) return
+      gsap.from(petRef.current, {
         scale: 1.01,
         duration: 4,
         ease: 'expoScale',
       })
-      gsap.to(heartRef.current, {
+      gsap.to(petRef.current, {
         scale: 1,
         duration: 2,
         ease: 'power1.out',
       })
-    }
+    })
 
-    const intervalID = setInterval(changeImage, 2000)
+    const intervalID = setInterval(animateImage, 2000)
     return () => clearInterval(intervalID)
+  }
 
-  }, [])
+  startAnimationInterval()
 
   return (
-    <Image ref={heartRef} className={styles[style ?? '']} src={image} alt={alt ?? 'image'} width={width}
+    <Image ref={petRef} className={styles[style ?? '']} src={image} alt={alt ?? 'image'} width={width}
            height={height} priority/>
   )
 }

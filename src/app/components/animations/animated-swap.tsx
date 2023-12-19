@@ -15,27 +15,29 @@ interface AnimatedSwapProps {
 
 export default function AnimatedSwap( { images, alt, style, width = 70, height = 70 }: AnimatedSwapProps ) {
   const pooRef = useRef<HTMLImageElement | null>(null)
+  const { contextSafe } = useGSAP({ scope: pooRef })
 
-  useGSAP(() => {
+  const startAnimationInterval = () => {
     let currentIndex = 0
 
-    const changeImage = () => {
-      if (!pooRef.current) return
-      gsap.to(pooRef.current, {
-        onComplete: () => {
-          currentIndex = ( currentIndex + 1 ) % images.length
-          if (pooRef.current) {
-            pooRef.current.src = images[currentIndex]
-          }
-        },
-        duration: 0.2,
-      })
-    }
-
+    const changeImage = contextSafe(() => {
+        if (!pooRef.current) return
+        gsap.to(pooRef.current, {
+          onComplete: () => {
+            currentIndex = ( currentIndex + 1 ) % images.length
+            if (pooRef.current) {
+              pooRef.current.src = images[currentIndex]
+            }
+          },
+          duration: 0.2,
+        })
+      },
+    )
     const intervalID = setInterval(changeImage, 2000)
     return () => clearInterval(intervalID)
+  }
 
-  }, [images])
+  startAnimationInterval()
 
   return (
     <Image ref={pooRef} className={styles[style ?? '']} src={images[0]} alt={alt ?? 'image'} width={width}

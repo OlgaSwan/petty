@@ -35,7 +35,6 @@ export default function AnimatedHeartBeating( {
 
     const intervalID = setInterval(changeImage, 2000)
     return () => clearInterval(intervalID)
-
   }, [])
 
   return (
