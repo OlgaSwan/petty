@@ -1,38 +1,34 @@
 import React from 'react'
-import Pet from '../(game-scope)/game/components/pet/pet'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from './about.module.scss'
-import Link from 'next/link'
 
 export default async function About() {
   return (
-    <div className={styles['grid-container']}>
+    <div className={styles['about--container']}>
       <div className={styles['about-text']}>
-        <h4>
-          Welcome to &apos;Petty&apos;—your beloved pixelated Tamagotchi
-          adventure!
-        </h4>
-        <p>
-          Choose your pet&apos;s skin, name it, and plunge into a world of care.
-          Watch as your friend loses happiness, fullness, and thirst every few
-          seconds. Your role? Keep them fed, watered, and loved—but beware, it
-          costs coins!
+        <p className={styles['heading']}>
+          Welcome to Petty - your pixelated Tamagotchi game.
+        </p>
+        <p>{`Choose your pet's skin, name it, and plunge into a world of care.
+          Your role? Keep your friend hydrated, well-fed, and super loved. But remember, caring also involves spending
+          your coins wisely!`}
         </p>
         <p>
-          Stay alert for endearing notifications indicating hunger, happiness,
-          affection, or even the call of nature. Want more coins to buy
-          something for your pet? Find a job... just kidding! 😄
+          Stay alert for cute notifications indicating hunger, happiness,
+          affection, or even the call of nature. Wondering how to get more coins to treat your pet? Then find a job...
+          just kidding! 😄
         </p>
         <p>
-          Interact by petting, feeding, and hydrating your companion, and revel
-          in the joyful jumps with every action. Keep an eye on its urine level;
-          when it hits 50, take your pet for a stroll to spread the love and
-          earn coins.
+          {`Interact by petting, feeding, and hydrating your companion.
+          Watch it jump with joy with every act of kindness. But don't forget about bathroom breaks, when the urine
+          level hits 50, it's time for a little walk. It's not only a nice break but also a great way to earn more
+          coins.`}
         </p>
         <p>
-          Get ready to embark on a pixelated journey filled with care, joy, and
-          endless fun—because with &apos;Petty&apos; every click brings you
+          Get ready to go on a pixelated journey with <span style={{ fontWeight: 'bolder' }}>Petty</span> every click
+          brings you
           closer to a happier pet!
         </p>
       </div>
@@ -46,10 +42,7 @@ export default async function About() {
         />
       </Link>
       <div className={styles['github-info']}>
-        Olya chydo {/*Do you want to add some info from ur github profile?*/}
-      </div>
-      <div className={styles['pet']}>
-        <Pet image='pets/bat.svg' alt='Bat' name='Batty' />
+        {/*Do you want to add some info from ur GitHub profile?*/}
       </div>
     </div>
   )
