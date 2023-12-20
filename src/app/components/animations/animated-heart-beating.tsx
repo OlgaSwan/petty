@@ -25,11 +25,13 @@ export default function AnimatedHeartBeating( {
 
   useGSAP(() => {
     const changeImage = () => {
-      gsap.from(heartRef.current, {
-        scale: 1.1,
-        duration: 0.8,
-        ease: 'elastic.out',
-      })
+      if (heartRef.current) {
+        gsap.from(heartRef.current, {
+          scale: 1.1,
+          duration: 0.8,
+          ease: 'elastic.out',
+        })
+      }
     }
 
     const intervalID = setInterval(changeImage, 2000)

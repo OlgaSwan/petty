@@ -15,6 +15,7 @@ interface AnimatedSwapProps {
 
 export default function AnimatedSwap( { images, alt, style, width = 70, height = 70 }: AnimatedSwapProps ) {
   const pooRef = useRef<HTMLImageElement>(null)
+  const intervalID = useRef<NodeJS.Timeout | null>(null)
 
   useGSAP(() => {
     let currentIndex = 0
@@ -32,8 +33,10 @@ export default function AnimatedSwap( { images, alt, style, width = 70, height =
       })
     }
 
-    const intervalID = setInterval(changeImage, 2000)
-    return () => clearInterval(intervalID)
+    intervalID.current = setInterval(changeImage, 2000)
+    return () => {
+      if (intervalID.current) clearInterval(intervalID.current)
+    }
 
   }, [images])
 

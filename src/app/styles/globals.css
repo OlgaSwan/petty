@@ -39,6 +39,7 @@ header {
   justify-content: space-between;
   padding: 20px 40px;
   border-bottom: 2px solid #4565e8;
+  width: 960px;
   font-size: 20px;
   position: sticky;
   top: 0;
