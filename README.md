@@ -17,6 +17,7 @@ Choose your pet's skin, name it, and plunge into a world of care. Your role? Kee
 - **Notifications**: Receive notifications for hunger, happiness, affection, and bathroom needs.
 - **Animations**: Enjoy adorable animations.
 - **Pixel Design**: it's a symphony of colors, charming animations, and detailed landscapes that evoke a sense of warmth and joy.
+- **Performance**: incredible performance achieved by using server side rendering, dynamic imports, `next/Image`, and animation optimizations
 
 ![image](/public/github_showcase.png)
 
