@@ -37,15 +37,15 @@ export default function CreatePet() {
   const [selectedSlide, setSelectedSlide] = useState(slides[0])
   const [petName, setPetName] = useState('')
 
-  useEffect(() => {
-    showHeartRef.current = showHeart
-  }, [showHeart])
-
   const handleChange = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     const { value } = e.target
     const alphanumericOnly = value.replace(/[^a-zA-Z0-9 ]/g, '')
     setPetName(alphanumericOnly)
   }
+
+  useEffect(() => {
+    showHeartRef.current = showHeart
+  }, [showHeart])
 
   useEffect(() => {
     const handleScroll = () => {
