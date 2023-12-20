@@ -28,8 +28,7 @@ export default async function About() {
         </p>
         <p>
           Get ready to go on a pixelated journey with <span style={{ fontWeight: 'bolder' }}>Petty</span> every click
-          brings you
-          closer to a happier pet!
+          brings you closer to a happier pet!
         </p>
       </div>
       <Link href='/' className={styles['play--link']}>
