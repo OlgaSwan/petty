@@ -2,16 +2,16 @@
 
 import React, { useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useStore } from '@nanostores/react'
 import { petStore } from '@component/app/pet-store'
 
 import Pet from '@component/app/(game-scope)/game/components/pet/pet'
 import Bar from '@component/app/(game-scope)/game/components/bar'
 
 import styles from '@component/app/(game-scope)/walk/walk.module.scss'
+import usePet from '../hooks/usePet'
 
 function Walk() {
-  const pet = useStore(petStore.store)
+  const pet = usePet()
   const router = useRouter()
   const searchParams = useSearchParams()
 

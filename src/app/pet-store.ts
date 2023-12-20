@@ -1,6 +1,6 @@
 'use client'
 
-import { atom, action, onMount } from 'nanostores'
+import { atom, action } from 'nanostores'
 import { Pet } from '@component/app/types/pet'
 import { notiStore } from './(game-scope)/game/components/noti/store'
 
@@ -9,20 +9,15 @@ export type Field = 'happiness' | 'fullness' | 'thirst'
 
 const store = atom<Pet | undefined>(undefined)
 
-onMount(store, () => {
-  const localPet = localStorage.getItem(KEY)
-  if (localPet) store.set(JSON.parse(localPet) as Pet)
-})
-
-store.listen(( value ) =>
+store.listen((value) =>
   !value
     ? localStorage.removeItem('pet')
-    : localStorage.setItem('pet', JSON.stringify(value)),
+    : localStorage.setItem('pet', JSON.stringify(value))
 )
 
 export const petStore = {
   store,
-  tryGetFromLocalStorage: action(store, 'tryGetFromLocalStorage', ( store ) => {
+  tryGetFromLocalStorage: action(store, 'tryGetFromLocalStorage', (store) => {
     try {
       const localPet = localStorage.getItem(KEY)
       if (localPet) store.set(JSON.parse(localPet) as Pet)
@@ -30,10 +25,10 @@ export const petStore = {
       //ignored
     }
   }),
-  createPet: action(store, 'createPet', ( store, pet: Pet ) => {
+  createPet: action(store, 'createPet', (store, pet: Pet) => {
     store.set(pet)
   }),
-  reduceNeeds: action(store, 'reduceNeeds', ( store, field: Field ) => {
+  reduceNeeds: action(store, 'reduceNeeds', (store, field: Field) => {
     const pet = store.get()
 
     if (!pet) return
@@ -47,7 +42,7 @@ export const petStore = {
       if (pet[field] < 50) notiStore.add(field)
     }
   }),
-  eat: action(store, 'eat', ( store, value: number, price: number ) => {
+  eat: action(store, 'eat', (store, value: number, price: number) => {
     const pet = store.get()
     if (pet && pet.balance >= price) {
       const newValue = {
@@ -61,7 +56,7 @@ export const petStore = {
       notiStore.remove('fullness')
     }
   }),
-  drink: action(store, 'drink', ( store, value: number, price: number ) => {
+  drink: action(store, 'drink', (store, value: number, price: number) => {
     const pet = store.get()
     if (pet && pet.balance >= price) {
       const newValue = {
@@ -78,7 +73,7 @@ export const petStore = {
       if (newValue.urine > 50) notiStore.add('pee')
     }
   }),
-  walk: action(store, 'walk', ( store, value: number ) => {
+  walk: action(store, 'walk', (store, value: number) => {
     const pet = store.get()
     if (pet) {
       const newUrineValue = Math.max(0, pet.urine - value)
@@ -91,7 +86,7 @@ export const petStore = {
       if (newUrineValue < 50) notiStore.remove('pee')
     }
   }),
-  play: action(store, 'play', ( store, value: number, price: number ) => {
+  play: action(store, 'play', (store, value: number, price: number) => {
     const pet = store.get()
     if (pet && pet.balance >= price) {
       const newValue = {
@@ -105,7 +100,7 @@ export const petStore = {
       notiStore.remove('happiness')
     }
   }),
-  earn: action(store, 'earn', ( store, value: number ) => {
+  earn: action(store, 'earn', (store, value: number) => {
     const pet = store.get()
     if (pet) {
       const newValue = {

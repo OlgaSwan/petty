@@ -4,7 +4,6 @@ import React from 'react'
 import Image from 'next/image'
 
 import { petStore } from '@component/app/pet-store'
-import { useStore } from '@nanostores/react'
 
 import Pet from '@component/app/(game-scope)/game/components/pet/pet'
 import ConditionsList from '@component/app/(game-scope)/game/components/conditions-list'
@@ -16,9 +15,10 @@ import { beverageList } from '@component/app/shared-data/beverages'
 import { toyList } from '@component/app/shared-data/toys'
 
 import styles from '../(game-scope)/game/game.module.scss'
+import usePet from '../hooks/usePet'
 
 export default function Game() {
-  const pet = useStore(petStore.store)
+  const pet = usePet()
 
   if (!pet) return null
 
