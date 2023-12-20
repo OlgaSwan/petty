@@ -74,7 +74,7 @@ function Pet( { image, name, alt }: PetProps ) {
     <>
       <Noti target={petRef}/>
       <div className={styles['pet--container']} onClick={() => animatePetJump()}>
-        <h2 style={{ alignSelf: 'center' }}>{name}</h2>
+        <h1 style={{ alignSelf: 'center' }}>{name}</h1>
         <div ref={petRef} style={{ margin: '0', padding: '0' }}>
           <AnimatedBreathing
             image={image}

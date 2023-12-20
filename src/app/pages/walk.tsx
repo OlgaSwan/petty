@@ -6,10 +6,10 @@ import { petStore } from '@component/app/pet-store'
 
 import Pet from '@component/app/(game-scope)/game/components/pet/pet'
 import Bar from '@component/app/(game-scope)/game/components/bar'
-
-import styles from '@component/app/(game-scope)/walk/walk.module.scss'
 import usePet from '../hooks/usePet'
 import PetNotFound from '../components/petNotFound'
+
+import styles from '@component/app/(game-scope)/walk/walk.module.scss'
 
 function Walk() {
   const pet = usePet()
@@ -40,15 +40,15 @@ function Walk() {
     }
   }, [router, pet])
 
-  if (!pet) return <PetNotFound />
+  if (!pet) return <PetNotFound/>
 
   return (
     <div
       className={styles['walk--container']}
       style={{ backgroundImage: `url('${place}')` }}
     >
-      <Bar title='Walking around' percent={pet.urine} />
-      <Pet image={pet.image} name={pet.name} alt={pet.alt} />
+      <Bar title='Walking around' percent={pet.urine}/>
+      <Pet image={pet.image} name={pet.name} alt={pet.alt}/>
     </div>
   )
 }

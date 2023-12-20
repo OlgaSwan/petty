@@ -1,6 +1,10 @@
 .game--container {
   display: flex;
   flex-direction: row;
+  padding: 16px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 16px;
 }
 
 .conditions-interactions--container {
@@ -42,7 +46,7 @@
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  gap: 30px;
+  gap: 20px;
   cursor: pointer;
 }
 
