@@ -15,6 +15,9 @@
 .list > *:last-child {
   margin-right: 0;
 }
+.list li {
+  cursor: pointer;
+}
 
 .navButtons {
   width: 24px;

@@ -13,7 +13,7 @@ function VolumeBtn() {
 
   useEffect(() => {
     let savedVolume = localStorage.getItem('petty-volume')
-    if (savedVolume == null) {
+    if (savedVolume === null) {
       savedVolume = 'false'
     }
     setVolume(JSON.parse(savedVolume))

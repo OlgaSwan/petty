@@ -57,7 +57,7 @@ function Carousel<T>( {
   }
 
   return (
-    <>
+    <div>
       <div className={styles.slides}>
         {isControlsVisible && (
           <PrevButton onClick={onPrevClick} className={styles.navButtons}/>
@@ -86,7 +86,7 @@ function Carousel<T>( {
           />
         </div>
       )}
-    </>
+    </div>
   )
 }
 
