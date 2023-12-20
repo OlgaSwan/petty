@@ -16,7 +16,7 @@ Choose your pet's skin, name it, and plunge into a world of care. Your role? Kee
 - **Gameplay**: Interact by petting, feeding, and hydrating your companion. Watch it jump with joy with every act of kindness. But don't forget about bathroom breaks (some actions require coins).
 - **Notifications**: Receive notifications for hunger, happiness, affection, and bathroom needs.
 - **Animations**: Enjoy adorable animations.
-- **Pixel Design**: Experience the nostalgia of a pixelated world in design and gameplay.
+- **Pixel Design**: it's a symphony of colors, charming animations, and detailed landscapes that evoke a sense of warmth and joy.
 
 ![image](/public/github_showcase.png)
 
