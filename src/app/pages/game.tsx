@@ -16,21 +16,22 @@ import { toyList } from '@component/app/shared-data/toys'
 
 import styles from '../(game-scope)/game/game.module.scss'
 import usePet from '../hooks/usePet'
+import PetNotFound from '../components/petNotFound'
 
 export default function Game() {
   const pet = usePet()
 
-  if (!pet) return null
+  if (!pet) return <PetNotFound />
 
   return (
     <div className={styles['game--container']}>
       <div className={styles['conditions-interactions--container']}>
-        <ConditionsList/>
+        <ConditionsList />
         <div className={styles['interactions--container']}>
           <InteractionsList
             key='meals-list'
             title='Meals'
-            array={mealList.filter(( e ) => e.diet === pet.diet)}
+            array={mealList.filter((e) => e.diet === pet.diet)}
             onClick={petStore.eat}
             balance={pet.balance}
           />
@@ -50,7 +51,7 @@ export default function Game() {
           />
         </div>
       </div>
-      <Pet image={pet.image} name={pet.name} alt={pet.alt}/>
+      <Pet image={pet.image} name={pet.name} alt={pet.alt} />
       <div className={styles['places--container']}>
         <Image
           src='/game-asset/pet-home.svg'
@@ -59,7 +60,7 @@ export default function Game() {
           height={208}
           style={{ alignSelf: 'center' }}
         />
-        {pet.urine > 50 && <PlaceToWalkSelector/>}
+        {pet.urine > 50 && <PlaceToWalkSelector />}
       </div>
     </div>
   )
