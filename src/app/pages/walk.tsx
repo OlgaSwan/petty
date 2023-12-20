@@ -34,10 +34,10 @@ function Walk() {
   }, [])
 
   useEffect(() => {
-    if (pet?.urine === 0) {
+    if (pet && pet.urine === 0) {
       router.push('/game')
     }
-  }, [router, pet?.urine])
+  }, [router, pet])
 
   if (!pet) return null
 

@@ -52,24 +52,28 @@ function Pet( { image, name, alt }: PetProps ) {
 
   const animatePetJump = contextSafe(
     () => {
-      gsap.fromTo(
-        petRef.current,
-        { y: -100, duration: 2, ease: 'expo.in' },
-        { y: 0, duration: 1, ease: 'expo.out' },
-      )
+      if (petRef.current) {
+        gsap.fromTo(
+          petRef.current,
+          { y: -100, duration: 2, ease: 'expo.in' },
+          { y: 0, duration: 1, ease: 'expo.out' },
+        )
+      }
     },
   )
 
-  onAction(petStore.store, ( { actionName } ) => {
-    if (actionName === 'eat' || actionName === 'drink' || actionName === 'play') {
-      animatePetJump()
-    }
-  })
+  useEffect(() => {
+    return onAction(petStore.store, ( { actionName } ) => {
+      if (['eat', 'drink', 'play'].includes(actionName)) {
+        animatePetJump()
+      }
+    })
+  }, [animatePetJump])
 
   return (
     <>
       <Noti target={petRef}/>
-      <div className={styles['pet--container']}>
+      <div className={styles['pet--container']} onClick={() => animatePetJump()}>
         <h2 style={{ alignSelf: 'center' }}>{name}</h2>
         <div ref={petRef} style={{ margin: '0', padding: '0' }}>
           <AnimatedBreathing
