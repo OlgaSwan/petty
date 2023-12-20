@@ -36,6 +36,12 @@ export default function CreatePet() {
   const [selectedSlide, setSelectedSlide] = useState(slides[0])
   const [petName, setPetName] = useState('')
 
+  const handleChange = ( e: React.ChangeEvent<HTMLInputElement> ) => {
+    const { value } = e.target
+    const alphanumericOnly = value.replace(/[^a-zA-Z0-9 ]/g, '')
+    setPetName(alphanumericOnly)
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY || document.documentElement.scrollTop
@@ -71,7 +77,7 @@ export default function CreatePet() {
           type='text'
           placeholder='Enter your pet name'
           value={petName}
-          onChange={( e ) => setPetName(e.target.value)}
+          onChange={handleChange}
           maxLength={24}
         />
       </div>
