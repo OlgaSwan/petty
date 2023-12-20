@@ -22,11 +22,11 @@ Choose your pet's skin, name it, and plunge into a world of care. Your role? Kee
 
 ## 📜 Packages
 
-- [`Next.js`](https://nextjs.org/) - provides React-based web application with server-side rendering and static website generation
-- [`Typescript`](https://www.typescriptlang.org/) - typesafety
-- [`Nanostores`](https://github.com/nanostores/nanostores/) - tiny state manager
-- [`Sass`](https://sass-lang.com/) - powerful professional grade CSS extension language
-- [`GSAP`](https://sass-lang.com/) - fancy high-performance animations that work in every major browser
+- [`Next.js`](https://nextjs.org/) - provides React-based web application with server-side rendering and static website generation.
+- [`Typescript`](https://www.typescriptlang.org/) - typesafety, enhances code quality, catches errors during development, and improves overall maintainability.
+- [`Nanostores`](https://github.com/nanostores/nanostores/) - tiny state manager for your smol pet.
+- [`Sass`](https://sass-lang.com/) - powerful professional grade CSS extension language.
+- [`GSAP`](https://sass-lang.com/) - fancy high-performance animations that work in every major browser.
 
 ## 🛠️ Local development
 
