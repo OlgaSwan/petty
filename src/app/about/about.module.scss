@@ -5,7 +5,7 @@
   gap: 60px;
 }
 
-.about-text {
+.about--text {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -20,12 +20,33 @@
   }
 }
 
-.github-info {
+.github--container {
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  align-self: center;
+  gap: 14px;
+  width: 100%;
+
+  & .link {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & .content {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  & .info {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px;
+    align-items: start;
+  }
 }
+
 
 .play--link {
   justify-self: center;

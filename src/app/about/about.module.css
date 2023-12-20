@@ -5,24 +5,39 @@
   gap: 60px;
 }
 
-.about-text {
+.about--text {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 560px;
 }
-.about-text p {
+.about--text p {
   font-size: 18px;
 }
-.about-text p.heading {
+.about--text p.heading {
   font-size: 30px;
 }
 
-.github-info {
+.github--container {
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  align-self: center;
+  gap: 14px;
+  width: 100%;
+}
+.github--container .link:hover {
+  text-decoration: underline;
+}
+.github--container .content {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+}
+.github--container .info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+  align-items: start;
 }
 
 .play--link {
