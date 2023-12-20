@@ -53,7 +53,7 @@ export default function Game() {
       <Pet image={pet.image} name={pet.name} alt={pet.alt}/>
       <div className={styles['places--container']}>
         <Image
-          src='/pet-home.svg'
+          src='/game-asset/pet-home.svg'
           alt='Pet home'
           width={200}
           height={208}

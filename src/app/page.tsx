@@ -33,8 +33,13 @@ export default function CreatePet() {
   const router = useRouter()
   const formRef = useRef<HTMLFormElement>(null)
   const [showHeart, setShowHeart] = useState(true)
+  const showHeartRef = useRef(showHeart)
   const [selectedSlide, setSelectedSlide] = useState(slides[0])
   const [petName, setPetName] = useState('')
+
+  useEffect(() => {
+    showHeartRef.current = showHeart
+  }, [showHeart])
 
   const handleChange = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     const { value } = e.target
@@ -45,15 +50,15 @@ export default function CreatePet() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY || document.documentElement.scrollTop
-      setShowHeart(scrollPosition < 100)
+      if (scrollPosition < 100 !== showHeartRef.current) {
+        setShowHeart(scrollPosition < 100)
+      }
     }
-
     window.addEventListener('scroll', handleScroll)
-
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [showHeart])
+  }, [])
 
   return (
     <form ref={formRef}

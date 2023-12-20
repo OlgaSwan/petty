@@ -19,7 +19,11 @@ function Header() {
 
     window.addEventListener('scroll', handleScroll)
 
-  }, [colored])
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+
+  }, [])
 
   return (
     <header className={colored ? 'header--colored' : ''}>
