@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
@@ -37,6 +37,8 @@ export default function CreatePet() {
   const [selectedSlide, setSelectedSlide] = useState(slides[0])
   const [petName, setPetName] = useState('')
 
+  const poopImages = useMemo(() => ['/game-asset/poo_1.svg', '/game-asset/poo_2.svg'], [])
+
   const handleChange = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     const { value } = e.target
     const alphanumericOnly = value.replace(/[^a-zA-Z0-9 ]/g, '')
@@ -68,11 +70,10 @@ export default function CreatePet() {
 
             if (petName.trim()) {
               createPet(selectedSlide, petName)
-              router.push('/game')
             } else {
               createPet(selectedSlide, selectedSlide.alt)
-              router.push('/game')
             }
+            router.push('/game')
           }}
     >
       {showHeart && <AnimatedHeartBeating image={'/game-asset/heart.svg'} alt='Heart beating' style='heart'/>}
@@ -119,7 +120,7 @@ export default function CreatePet() {
           <Image className={styles['play--image']} src={'/buttons/play-btn.svg'} alt='Play' width={160} height={66}/>
         </button>
       </div>
-      <AnimatedSwap images={['/game-asset/poo_1.svg', '/game-asset/poo_2.svg']} alt='Poo' style='poo'/>
+      <AnimatedSwap images={poopImages} alt='Poo' style='poo'/>
     </form>
   )
 }

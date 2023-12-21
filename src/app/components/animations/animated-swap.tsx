@@ -1,7 +1,5 @@
-import React, { useRef } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import Image from 'next/image'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
 
 import styles from '@component/app/styles/home.module.scss'
 
@@ -13,40 +11,44 @@ interface AnimatedSwapProps {
   height?: number
 }
 
-export default function AnimatedSwap( { images, alt, style, width = 70, height = 70 }: AnimatedSwapProps ) {
-  const pooRef = useRef<HTMLImageElement>(null)
-  const intervalID = useRef<NodeJS.Timeout | null>(null)
+function AnimatedSwap({
+  images,
+  alt,
+  style,
+  width = 70,
+  height = 70,
+}: AnimatedSwapProps) {
+  console.log(123)
+  const [currentImage, setCurrentImage] = useState(images[0])
 
-  useGSAP(() => {
-    let currentIndex = 0
+  useEffect(() => {
+    let timeoutID: NodeJS.Timeout
 
     const changeImage = () => {
-      if (!pooRef.current) return
-      gsap.to(pooRef.current, {
-        onComplete: () => {
-          currentIndex = ( currentIndex + 1 ) % images.length
-          if (pooRef.current) {
-            pooRef.current.src = images[currentIndex]
-          }
-        },
-        duration: 0.2,
-      })
+      timeoutID = setTimeout(() => {
+        setCurrentImage((prev) => {
+          const index = images.indexOf(prev)
+          const nextIndex = index + 1
+          return nextIndex < images.length ? images[nextIndex] : images[0]
+        })
+        changeImage()
+      }, 2000)
     }
+    changeImage()
 
-    intervalID.current = setInterval(changeImage, 2000)
-    return () => {
-      if (intervalID.current) clearInterval(intervalID.current)
-    }
-
+    return () => clearTimeout(timeoutID)
   }, [images])
 
   return (
-    <Image ref={pooRef} className={styles[style ?? '']} src={images[0]} alt={alt ?? 'image'} width={width}
-           height={height}
-           priority/>
+    <Image
+      className={styles[style ?? '']}
+      src={currentImage}
+      alt={alt ?? 'image'}
+      width={width}
+      height={height}
+      priority
+    />
   )
 }
 
-
-
-
+export default memo(AnimatedSwap)
