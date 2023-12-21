@@ -14,32 +14,34 @@ interface AnimatedHeartBeatingProps {
   height?: number
 }
 
-export default function AnimatedHeartBeating( {
+export default function AnimatedHeartBeating({
   image,
   alt,
   style,
   width = 70,
   height = 70,
-}: AnimatedHeartBeatingProps ) {
+}: AnimatedHeartBeatingProps) {
   const heartRef = useRef<HTMLImageElement>(null)
 
   useGSAP(() => {
-    const changeImage = () => {
-      if (heartRef.current) {
-        gsap.from(heartRef.current, {
-          scale: 1.1,
-          duration: 0.8,
-          ease: 'elastic.out',
-        })
-      }
-    }
-
-    const intervalID = setInterval(changeImage, 2000)
-    return () => clearInterval(intervalID)
+    gsap.from(heartRef.current, {
+      scale: 1.1,
+      duration: 0.8,
+      ease: 'elastic.out',
+      repeat: -1,
+      repeatDelay: 2,
+    })
   }, [])
 
   return (
-    <Image ref={heartRef} className={styles[style ?? '']} src={image} alt={alt ?? 'image'} width={width}
-           height={height} priority/>
+    <Image
+      ref={heartRef}
+      className={styles[style ?? '']}
+      src={image}
+      alt={alt ?? 'image'}
+      width={width}
+      height={height}
+      priority
+    />
   )
 }
