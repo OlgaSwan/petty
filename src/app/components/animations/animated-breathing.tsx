@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
 
 import gsap from 'gsap'
@@ -14,44 +14,39 @@ interface AnimatedBreathingProps {
   height?: number
 }
 
-export default function AnimatedBreathing( {
+export default function AnimatedBreathing({
   image,
   alt,
   style,
   width = 70,
   height = 70,
-}: AnimatedBreathingProps ) {
+}: AnimatedBreathingProps) {
   const petRef = useRef<HTMLImageElement>(null)
-  const intervalID = useRef<number | null>(null)
-  const { contextSafe } = useGSAP({ scope: petRef })
 
-  const startAnimationInterval = useCallback(() => {
-    const animateImage = contextSafe(() => {
-      const tl = gsap.timeline()
-      tl.from(petRef.current, {
+  useGSAP(() => {
+    gsap
+      .timeline({ repeat: -1 })
+      .from(petRef.current, {
         scale: 1.01,
         duration: 4,
         ease: 'expoScale',
       })
-        .to(petRef.current, {
-          scale: 1,
-          duration: 2,
-          ease: 'power1.out',
-        })
-    })
-
-    intervalID.current = setInterval(animateImage, 2000)
-    return () => {
-      if (intervalID.current) clearInterval(intervalID.current)
-    }
-  }, [contextSafe])
-
-  useEffect(() => {
-    return startAnimationInterval()
-  }, [startAnimationInterval])
+      .to(petRef.current, {
+        scale: 1,
+        duration: 2,
+        ease: 'power1.out',
+      })
+  })
 
   return (
-    <Image ref={petRef} className={styles[style ?? '']} src={image} alt={alt ?? 'image'} width={width}
-           height={height} priority/>
+    <Image
+      ref={petRef}
+      className={styles[style ?? '']}
+      src={image}
+      alt={alt ?? 'image'}
+      width={width}
+      height={height}
+      priority
+    />
   )
 }

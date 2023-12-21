@@ -31,7 +31,6 @@ const createPet = ( selectedSlide: Slide, petName: string ) => {
 
 export default function CreatePet() {
   const router = useRouter()
-  const formRef = useRef<HTMLFormElement>(null)
   const [showHeart, setShowHeart] = useState(true)
   const showHeartRef = useRef(showHeart)
   const [selectedSlide, setSelectedSlide] = useState(slides[0])
@@ -63,8 +62,7 @@ export default function CreatePet() {
   }, [])
 
   return (
-    <form ref={formRef}
-          className={showHeart ? styles['pet--form'] : `${styles['pet--form']} ${styles['hide--heart']}`}
+    <form className={showHeart ? styles['pet--form'] : `${styles['pet--form']} ${styles['hide--heart']}`}
           onSubmit={( e ) => {
             e.preventDefault()
 

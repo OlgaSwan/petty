@@ -18,7 +18,6 @@ function AnimatedSwap({
   width = 70,
   height = 70,
 }: AnimatedSwapProps) {
-  console.log(123)
   const [currentImage, setCurrentImage] = useState(images[0])
 
   useEffect(() => {
