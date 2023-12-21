@@ -16,7 +16,7 @@ import { toyList } from '@component/app/shared-data/toys'
 
 import styles from '../(game-scope)/game/game.module.scss'
 import usePet from '../hooks/usePet'
-import PetNotFound from '../components/petNotFound'
+import PetNotFound from '../components/pet-not-found'
 
 export default function Game() {
   const pet = usePet()

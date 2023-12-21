@@ -5,7 +5,7 @@
 }
 
 html {
-  background-color: #7395ff;
+  background-color: #7daffa;
 }
 
 body {
@@ -38,7 +38,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   padding: 20px 40px;
-  border-bottom: 2px solid #4565e8;
+  border-bottom: 1px solid #4565e8;
   width: 960px;
   font-size: 20px;
   position: sticky;

@@ -14,7 +14,7 @@ function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY || document.documentElement.scrollTop
-      setColored(scrollPosition > 80)
+      setColored(scrollPosition > 60)
     }
 
     window.addEventListener('scroll', handleScroll)

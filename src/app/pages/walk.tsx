@@ -7,7 +7,7 @@ import { petStore } from '@component/app/pet-store'
 import Pet from '@component/app/(game-scope)/game/components/pet/pet'
 import Bar from '@component/app/(game-scope)/game/components/bar'
 import usePet from '../hooks/usePet'
-import PetNotFound from '../components/petNotFound'
+import PetNotFound from '../components/pet-not-found'
 
 import styles from '@component/app/(game-scope)/walk/walk.module.scss'
 

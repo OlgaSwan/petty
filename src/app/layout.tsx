@@ -21,6 +21,10 @@ export default function RootLayout( {
 } ) {
   return (
     <html lang='en'>
+    <head>
+      <title>{metaTitle}</title>
+      <link rel='icon' type='image/svg+xml' href='/game-asset/heart.svg'/>
+    </head>
     <body className={pixelify.className}>
     <div className='body--container'>
       <Header/>
@@ -31,3 +35,4 @@ export default function RootLayout( {
     </html>
   )
 }
+

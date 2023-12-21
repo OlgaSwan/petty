@@ -1,4 +1,4 @@
-$background-html-color: #7395ff;
+$background-html-color: #7daffa;
 $background-body-color: #f4bda3;
 $border-radius: 8px;
 $border-color: #4565e8;
@@ -44,7 +44,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   padding: 20px 40px;
-  border-bottom: 2px solid $border-color;
+  border-bottom: 1px solid $border-color;
   width: 960px;
   font-size: 20px;
   position: sticky;

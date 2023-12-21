@@ -53,9 +53,9 @@ export default async function About() {
       </Link>
       {githubData &&
           <div className={styles['github--container']}>
-              <h3>My GitHub <Link className={styles.link} href={githubData.html_url}>Profile</Link></h3>
+              <h3>My GitHub <Link className={styles.link} href={githubData.html_url} target='blank'>Profile</Link></h3>
               <div className={styles.content}>
-                  <Link className={styles.avatar} href={githubData.html_url}>
+                  <Link className={styles.avatar} href={githubData.html_url} target='blank'>
                       <Image src={githubData.avatar_url} alt='Olga Swan' width={100} height={100}
                              style={{ border: '4px solid black', borderRadius: '14px' }}/>
                   </Link>
